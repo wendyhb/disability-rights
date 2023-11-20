@@ -8,7 +8,6 @@ gdp_table <- gdp_table |>
   janitor::clean_names() |> 
   rename_with(~ str_replace(., "x(\\d+)", "year_\\1"), starts_with("x"))  
 
-
 gdp_long <- gdp_table |> 
   pivot_longer(
     cols = c(year_1960:year_2022),

@@ -1,6 +1,5 @@
 # Safety Index ------------------------------------------------------------
  
-
 # use loops and map to get different years
 # after that add year columns to every table
 years <- 2012:2023

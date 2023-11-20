@@ -8,6 +8,4 @@ head(freedom_table)
 freedom <- freedom_table |> 
   janitor::clean_names() |> 
   mutate(country = country_territory, year = edition |> as.integer(), freedom_index = total,.keep = "none")
-freedom $ country |> unique()
-freedom
 write_rds(freedom, "data/freedom.rds")

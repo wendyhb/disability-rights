@@ -6,11 +6,8 @@ crpd_table <- html_crpd |>
   html_table() 
 crpd_table <- crpd_table[[1]] 
 
-
 crpd_table <- crpd_table |> 
   janitor::clean_names() 
-datatable(crpd_table)
-names(crpd_table)
 
 crpd_table <- crpd_table |>  
   slice(-(1:3)) |> 
@@ -19,11 +16,8 @@ crpd_table <- crpd_table |>
          crpd_ratification_date = ratification_date_accession_a_succession_d_date,
          crpd_entry_into_force_date = entry_into_force_date ) 
 
-
 crpd_table <- crpd_table |> 
   mutate(crpd_ratification_date = str_remove(crpd_ratification_date, "\\(a\\)")) 
-datatable(crpd_table)
-
 
 crpd_table <- crpd_table |> 
   mutate(
@@ -34,20 +28,8 @@ crpd_table <- crpd_table |>
       )
     )
 
-## if inly keep the year of the date
-# crpd_table |> 
-#   mutate(
-#     country, 
-#     signature_year = year(signature_date), 
-#     ratification_year = year(ratification_date),
-#     entry_into_force_year = year(entry_into_force_date),
-#     .keep = "none"
-#     )
-
-
 # CRPD - Convention on the Rights of Persons with Disabilities, 195 countries in total ------------
-# file_path <- paste("C:/Users/cyn64/OneDrive - University of Guelph/r/disability-rights/data/",i, sep = "")
-
+# file_path <- paste("data/",i, sep = "")
 
 my_list_1 <- list()
 for(i in 1:195){
@@ -59,9 +41,6 @@ for(i in 1:195){
     my_list_1[[i]] <- crpd_table_2
     Sys.sleep(5)
 }
-
-my_list_1
-
 
 # clean the list and make it into one table for country_opt_protocol------------------------------------------------------------------
 
@@ -82,7 +61,6 @@ country_opt_protocol <- cleaned_list |> bind_rows()
 write_rds(country_opt_protocol,"data/crpd_webscraped.rds")
 
 # combine crpd_table and country_opt_protocol -------------------------------------
-datatable(crpd_table)  
 crpd_final <- full_join(crpd_table, country_opt_protocol, by = "country") 
 crpd_final <- crpd_final %>%
   mutate_all(~na_if(.x, "")) |> 
@@ -121,7 +99,6 @@ crpd_final <- crpd_final |>
      "ratified & protocol" ~ 5,
      "signed & ratified & protocol" ~ 5
   ))
-
 
 # only select relevant columns for the research
 

@@ -1,10 +1,10 @@
 library(reticulate)
-path_to_python <- "C://Users/cyn64/AppData/Local/Microsoft/WindowsApps/python"
-use_python(path_to_python)
+# path_to_python <- "C:/Users/cyn64/AppData/Local/Microsoft/WindowsApps/python"
+# use_python(path_to_python)
 reticulate::py_config()
-# load Python modules
 DIFFLIB <-reticulate::import("difflib")
 POLYFUZZ <- reticulate::import("polyfuzz")
+
 full_data <- read_rds("data/full_data.rds")
 full_data |> names()
 full_data <- full_data |> 

@@ -16,4 +16,3 @@ unemployment <- unemploy_table |>
   mutate(country = country_name, unemployment_rate, year = year |> as.integer(), .keep = "none") |> 
   relocate(country)
 write_rds(unemployment, "data/unemployment.rds")
-unemployment
