@@ -106,3 +106,6 @@ crpd_final <- crpd_final |>
   select(country, crpd_signature_date, crpd_ratification_date,optional_protocol_date,crpd_category, crpd_category_value)
 
 write_rds(crpd_final,"data/crpd.rds")
+
+
+# 198 countries in total(European Union is not removed yet)

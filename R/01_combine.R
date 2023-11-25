@@ -32,21 +32,21 @@ my_list <- my_list[names(my_list) != "crpd"]
 # and so on
 
 full_data <- Reduce(
-  \(x,y) full_join(x, y, by = join_by(country, year)), 
+  \(x,y) full_join(x, y, by = join_by(country, year)),
   my_list
   )
-library(fuzzyjoin)
-
-fuzz <- Reduce(
-  \(x,y) stringdist_join(
-    x, y, by = c("country", "year"),
-    mode='left', #use left join
-    method = "jw", #use jw distance metric
-    max_dist=99, 
-    distance_col='dist'
-    ), 
-  my_list
-)
+# library(fuzzyjoin)
+# 
+# fuzz <- Reduce(
+#   \(x,y) stringdist_join(
+#     x, y, by = c("country", "year"),
+#     mode='left', #use left join
+#     method = "jw", #use jw distance metric
+#     max_dist=99, 
+#     distance_col='dist'
+#     ), 
+#   my_list
+# )
 
 
 full_data$country |> unique()
@@ -62,4 +62,6 @@ full_data$country |> unique()
 
 full_data <- full_data |> arrange(country, desc(year))
 
+
 write_rds(full_data, "data/full_data.rds")
+# write_csv(full_data, "data/full_data.csv")
