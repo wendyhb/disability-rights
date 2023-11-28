@@ -1,11 +1,11 @@
 source("R/my-packages.R")
-my_path <- getwd()
-files <- list.files("data", pattern = "\\.rds$") |> 
+path <- "data/clean-raw/"
+files <- list.files(path, pattern = "\\.rds$") |> 
   as.vector()
 my_list <- list()
 
 for (i in files){
-  file_path <- paste("data/",i, sep = "")
+  file_path <- paste(path,i, sep = "")
   temp_data <- readRDS(file_path)
   name <- str_extract(i,".*(?=\\.rds)")
   my_list[[name]] <- temp_data
@@ -17,7 +17,6 @@ head(democ)
 head(gdp)
 head(safety)
 head(culture_factors)
-  culture_factors |> view()
 head(freedom)
 head(life_exp)
 head(unemployment)
@@ -31,10 +30,11 @@ my_list <- my_list[names(my_list) != "crpd"]
 # then the result with the third element of the list
 # and so on
 
-full_data <- Reduce(
+non_crpd <- Reduce(
   \(x,y) full_join(x, y, by = join_by(country, year)),
   my_list
   )
+
 # library(fuzzyjoin)
 # 
 # fuzz <- Reduce(
@@ -48,20 +48,14 @@ full_data <- Reduce(
 #   my_list
 # )
 
-
-full_data$country |> unique()
-
 # It mimics:
 
-# full_data <- full_join(cpi, democ, by = c("country","year")) |> 
+# non_crpd <- full_join(cpi, democ, by = c("country","year")) |> 
 #   full_join(gdp, by = c("country", "year")) |>
 #   full_join(safety, by = c("country", "year"))|>
 #   full_join(culture_factors, by = c("country", "year")) |>
 #   full_join(life_exp, by = c("country", "year"))|>
 #   full_join(unemployment, by = c("country", "year"))
 
-full_data <- full_data |> arrange(country, desc(year))
-
-
-write_rds(full_data, "data/full_data.rds")
-# write_csv(full_data, "data/full_data.csv")
+non_crpd <- non_crpd |> arrange(country, desc(year))
+write_rds(non_crpd, "data/non_crpd.rds")

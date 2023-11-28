@@ -3,7 +3,7 @@ source("R/my-packages.R")
 library(stringdist)
 
 
-full_data <- read_rds("data/full_data.rds") |> 
+all_but_crpd <- read_rds("data/all_but_crpd.rds") |> 
     mutate(country = str_replace_all(
     country,
     c("Bosnia And Herzegovina" = "Bosnia and Herzegovina",
@@ -12,9 +12,11 @@ full_data <- read_rds("data/full_data.rds") |>
       "Trinidad And Tobago" = "Trinidad and Tobago")
   )) |>
   filter(year > 2007)
+
+# crpd --------------------------------------------------------------------
+
 # the cleaning process above the filter line is to ensure that the later after the amatch(), the matched country names are perfectly matched wit no errors.
 crpd <- read_rds("data/crpd.rds")
-
 
 #clean crpd$country
 crpd <- crpd %>%
@@ -63,18 +65,17 @@ crpd <- crpd %>%
 crpd <- crpd %>%
   mutate(country = str_trim(country,side = "right"))
 
-  
+write_rds(crpd, "data/crpd_clean-country.rds")
 
+# Compare -----------------------------------------------------------------
 
-write_rds(crpd, "data/crpd_name-cleaned.rds")
-
-crpd_clean_name <- read_rds("data/crpd_name-cleaned.rds")
-crpd_clean_name$country
+crpd_clean <- read_rds("data/crpd_clean-country.rds")
+crpd_clean$country
 # after cleaning, there are still 197 countries in crpd
 
 
-messy_country <- unique(full_data$country)
-tidy_country <- unique(crpd_clean_name$country)
+messy_country <- unique(all_but_crpd$country)
+tidy_country <- unique(crpd_clean$country)
 # messy_country |> view()
 # 339 ?
 # tidy_country |> view()
@@ -84,7 +85,7 @@ tidy_country <- unique(crpd_clean_name$country)
 indexes <- amatch(messy_country, tidy_country, maxDist = 1)
 
 compare_df <- tibble(messy_country = messy_country,
-                 tidy_country = tidy_country[indexes]) 
+                     tidy_country = tidy_country[indexes]) 
 
 
 # double check all matched the values
@@ -96,14 +97,9 @@ to_be_fixed <- subset(compare_df_matched, tidy_country != messy_country)
 # apply this reference code to the full_data set later
 
 
-
-
 # now fix all unmatched country names manually
 compare_df_unmatched <- compare_df |> 
   filter(is.na(tidy_country)) 
-
-
-
 
 
 
@@ -117,113 +113,68 @@ compare_df_unmatched$messy_country |> str_subset("Congo")
 # [5] "Congo, Rep."                       
 # [6] "Democratic Republic of Congo"  
 
+regexes <- c(".*Bahamas.*" = "Bahamas",
+           ".*Bolivia.*" = "Bolivia",
+           ".*Brunei.*"= "Brunei",
+           ".*Bosnia And Herzegovina.*" = "Bosnia And Herzegovina",
+           ".*Congo.*(Brazzaville).*" = "Congo",
+           ".*Congo, Rep.*" = "Congo",
+           
+           ## DEM. REP. OF CONGO
+           
+           "Congo.*(Democratic Republic of the).*" = "Democratic Republic of the Congo",
+           ".*Congo.*(Kinshasa).*" = "Democratic Republic of the Congo", 
+           "Congo, Dem. Rep." = "Democratic Republic of the Congo",
+           "Democratic Republic of Congo" = "Democratic Republic of the Congo", 
+           
+           ##
+           
+           "Czechia" = "Czech Republic",
+           "Egypt, Arab Rep."= "Egypt",
+           ".*Iran.*"= "Iran",
+           ".*Korea.*(Democratic People's Rep. of).*" = "North Korea",
+           ".*Korea.*(Republic of).*" = "South Korea",
+           ".*Korea, Dem. People's Rep.*" = "North Korea",
+           ".*Korea, North.*" = "North korea",
+           ".*Korea, Rep.*" = "South Korea",
+           ".*Korea, South.*" = "South Korea",
+           ".*Lao.*"= "Laos",
+           ".*Micronesia.*" = "Micronesia",
+           ".*Moldova.*"= "Moldova",
+           ".*Palestine.*"= "Pakestine",
+           "Russian Federation" = "Russia",
+           ".*Syria.*"= "Syria",
+           ".*Tanzania.*"= "Tanzania",
+           ".*Gambia.*"= "Gambia",
+           ".*Turkiye.*" = "Turkey",
+           ".*Türkiye.*" = "Turkey",
+           ".*United States of America.*" = "United States",
+           ".*Venezuela.*" = "Venezuela",
+           ".*Viet Nam.*" = "Vietnam",
+           ".*Yemen.*" = "Yemen")
 
 clean_compare_df_unmatched <- compare_df_unmatched |>
   mutate(messy_country = str_replace_all(
     messy_country, 
-    c(".*Bahamas.*" = "Bahamas",
-      ".*Bolivia.*" = "Bolivia",
-      ".*Brunei.*"= "Brunei",
-      ".*Bosnia And Herzegovina.*" = "Bosnia And Herzegovina",
-      ".*Congo.*(Brazzaville).*" = "Congo",
-      ".*Congo, Rep.*" = "Congo",
-      
-      ## DEM. REP. OF CONGO
-      
-      "Congo.*(Democratic Republic of the).*" = "Democratic Republic of the Congo",
-      ".*Congo.*(Kinshasa).*" = "Democratic Republic of the Congo", 
-      "Congo, Dem. Rep." = "Democratic Republic of the Congo",
-      "Democratic Republic of Congo" = "Democratic Republic of the Congo", 
-      
-      ##
-      
-      "Czechia" = "Czech Republic",
-      "Egypt, Arab Rep."= "Egypt",
-      ".*Iran.*"= "Iran",
-      ".*Korea.*(Democratic People's Rep. of).*" = "North Korea",
-      ".*Korea.*(Republic of).*" = "South Korea",
-      ".*Korea, Dem. People's Rep.*" = "North Korea",
-      ".*Korea, North.*" = "North korea",
-      ".*Korea, Rep.*" = "South Korea",
-      ".*Korea, South.*" = "South Korea",
-      ".*Lao.*"= "Laos",
-      ".*Micronesia.*" = "Micronesia",
-      ".*Moldova.*"= "Moldova",
-      ".*Palestine.*"= "Pakestine",
-      "Russian Federation" = "Russia",
-      ".*Syria.*"= "Syria",
-      ".*Tanzania.*"= "Tanzania",
-      ".*Gambia.*"= "Gambia",
-      ".*Turkiye.*" = "Turkey",
-      ".*Türkiye.*" = "Turkey",
-      ".*United States of America.*" = "United States",
-      ".*Venezuela.*" = "Venezuela",
-      ".*Viet Nam.*" = "Vietnam",
-      ".*Yemen.*" = "Yemen"
-      )
-      
+    regexes
   ))
 
- clean_compare_df_unmatched|> view()
 # unmatched countries are cleaned
 
 # now try to apply the code to the real data set
 
-# clean data_full dataset -------------------------------------------------
-full_data_clean <- full_data |> 
+# clean non_crpd -------------------------------------------------
+ non_crpd <- non_crpd |> 
    mutate(country = str_replace_all(
      country, 
-     c(".*Bahamas.*" = "Bahamas",
-       ".*Bolivia.*" = "Bolivia",
-       ".*Brunei.*"= "Brunei",
-       ".*Bosnia And Herzegovina.*" = "Bosnia And Herzegovina",
-       ".*Congo.*(Brazzaville).*" = "Congo",
-       ".*Congo, Rep.*" = "Congo",
-       
-       ## DEM. REP. OF CONGO
-       
-       "Congo.*(Democratic Republic of the).*" = "Democratic Republic of the Congo",
-       ".*Congo.*(Kinshasa).*" = "Democratic Republic of the Congo", 
-       "Congo, Dem. Rep." = "Democratic Republic of the Congo",
-       "Democratic Republic of Congo" = "Democratic Republic of the Congo", 
-       
-       ##
-       
-       "Czechia" = "Czech Republic",
-       "Egypt, Arab Rep."= "Egypt",
-       ".*Iran.*"= "Iran",
-       ".*Korea.*(Democratic People's Rep. of).*" = "North Korea",
-       ".*Korea.*(Republic of).*" = "South Korea",
-       ".*Korea, Dem. People's Rep.*" = "North Korea",
-       ".*Korea, North.*" = "North korea",
-       ".*Korea, Rep.*" = "South Korea",
-       ".*Korea, South.*" = "South Korea",
-       ".*Lao.*"= "Laos",
-       ".*Micronesia.*" = "Micronesia",
-       ".*Moldova.*"= "Moldova",
-       ".*Palestine.*"= "Pakestine",
-       "Russian Federation" = "Russia",
-       ".*Syria.*"= "Syria",
-       ".*Tanzania.*"= "Tanzania",
-       ".*Gambia.*"= "Gambia",
-       ".*Turkiye.*" = "Turkey",
-       ".*Türkiye.*" = "Turkey",
-       ".*United States of America.*" = "United States",
-       ".*Venezuela.*" = "Venezuela",
-       ".*Viet Nam.*" = "Vietnam",
-       ".*Yemen.*" = "Yemen"
-     )
-     
+     regexes
    ))
    
-write_rds(full_data_clean, "data/full_data_name-cleaned")
-full_data_clean_name <- read_rds("data/full_data_name-cleaned")
+write_rds(non_crpd_clean, "data/non_crpd_clean.rds")
 
+non_crpd_clean <- read_rds("data/non_crpd_clean.rds")
 
+full_data <- crpd_clean |> 
+   left_join(non_crpd_clean, by = join_by(country == country))
 
-
-full_data_final <- crpd_clean_name |> 
-   left_join(full_data_clean_name, by = join_by(country == country))
-
-full_data_final
-
+full_data |> names()
