@@ -22,7 +22,7 @@ head(life_exp)
 head(unemployment)
 head(crpd)
 
-# join the data together
+# join the data together, exlude crpd, because it has no "year" column
 
 my_list <- my_list[names(my_list) != "crpd"]
 

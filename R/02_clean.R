@@ -3,7 +3,7 @@ source("R/my-packages.R")
 library(stringdist)
 
 
-all_but_crpd <- read_rds("data/all_but_crpd.rds") |> 
+non_crpd <- read_rds("data/non_crpd.rds") |> 
     mutate(country = str_replace_all(
     country,
     c("Bosnia And Herzegovina" = "Bosnia and Herzegovina",
@@ -16,7 +16,7 @@ all_but_crpd <- read_rds("data/all_but_crpd.rds") |>
 # crpd --------------------------------------------------------------------
 
 # the cleaning process above the filter line is to ensure that the later after the amatch(), the matched country names are perfectly matched wit no errors.
-crpd <- read_rds("data/crpd.rds")
+crpd <- read_rds("data/clean-raw/crpd.rds")
 
 #clean crpd$country
 crpd <- crpd %>%
