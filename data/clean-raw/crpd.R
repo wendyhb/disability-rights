@@ -59,7 +59,8 @@ clean_and_mutate <- function(df) {
 cleaned_list <- my_list_1 |> map(\(x) x |> _[[1]] |> clean_and_mutate())
 country_opt_protocol <- cleaned_list |> bind_rows()
 write_rds(country_opt_protocol,"data/crpd_webscraped.rds")
-
+opt_protocol <- read_rds("data/intermediate/crpd_webscraped.rds")
+opt_protocol |> view()
 # combine crpd_table and country_opt_protocol -------------------------------------
 crpd_final <- full_join(crpd_table, country_opt_protocol, by = "country") 
 crpd_final <- crpd_final %>%
@@ -105,7 +106,8 @@ crpd_final <- crpd_final |>
 crpd_final <- crpd_final |> 
   select(country, crpd_signature_date, crpd_ratification_date,optional_protocol_date,crpd_category, crpd_category_value)
 
-write_rds(crpd_final,"data/crpd.rds")
-
+# write_rds(crpd_final,"data/crpd.rds")
+crpd <- read_rds("data/clean-raw/crpd.rds")
+crpd |> view()
 
 # 198 countries in total(European Union is not removed yet)

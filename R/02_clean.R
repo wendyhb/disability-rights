@@ -74,7 +74,7 @@ crpd_clean$country
 # after cleaning, there are still 197 countries in crpd
 
 
-messy_country <- unique(all_but_crpd$country)
+messy_country <- unique(non_crpd$country)
 tidy_country <- unique(crpd_clean$country)
 # messy_country |> view()
 # 339 ?
@@ -103,7 +103,6 @@ compare_df_unmatched <- compare_df |>
 
 
 
-datatable(compare_df_unmatched)
 compare_df_unmatched$messy_country |> str_subset("Congo")
 
 # [1] "Congo (Brazzaville)"               
@@ -170,11 +169,36 @@ clean_compare_df_unmatched <- compare_df_unmatched |>
      regexes
    ))
    
-write_rds(non_crpd_clean, "data/non_crpd_clean.rds")
+write_rds(non_crpd, "data/non_crpd_clean.rds")
 
 non_crpd_clean <- read_rds("data/non_crpd_clean.rds")
+#datatable(non_crpd_clean)
 
+protocol <- read_rds("data/clean-raw/protocol.rds") 
 full_data <- crpd_clean |> 
-   left_join(non_crpd_clean, by = join_by(country == country))
+   left_join(non_crpd_clean, by = join_by(country == country)) |> 
+   left_join(protocol, by = join_by(country == country))
 
-full_data |> names()
+
+# clean the crpd columns from the website that is broken
+
+full_data <- full_data |> 
+  select(-c("optional_protocol_date", "crpd_category", "crpd_category_value")) |> 
+  select(country, crpd_signature_date, crpd_ratification_date, 
+         protocol_sign, aces_or_ratif, everything())
+  
+
+write_rds(full_data,"data/data.rds")
+crpd_study <- read_rds("data/data.rds")
+
+
+### next step, clean crpd categories
+
+## testing of the country columns are clean in the below data frame)
+# data <- read_rds("data/data.rds")
+# protocol <- read_rds("data/clean-raw/protocol.rds") 
+# a <- data$country |> unique()
+# b <- crpd_clean$country |> unique()
+# c <- data$country |> unique()
+# identical(b, c)
+# identical(a, b)
