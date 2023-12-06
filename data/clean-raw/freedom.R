@@ -9,3 +9,4 @@ freedom <- freedom_table |>
   janitor::clean_names() |> 
   mutate(country = country_territory, year = edition |> as.integer(), freedom_index = total,.keep = "none")
 write_rds(freedom, "data/freedom.rds")
+freedom <- read_rds("data/clean-raw/freedom.rds")

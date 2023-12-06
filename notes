@@ -1,3 +1,10 @@
+To-Do:
+
+- rename most of the vague names like raw, raw_table, raw_clean into something that describes the data; e.g. protocol_raw for protocol data, or ptcl_raw
+- rename 01_combine.R to 01_combine-non-crpd.R 
+- 02_clean.R should only be for cleaning - not for exploring/finding regexes; this could be in 01.5_??.R
+
+
 # Add file changes to be committed
 git add .
 # Commit them with a message like WIP

@@ -2,85 +2,23 @@
 source("R/my-packages.R")
 library(stringdist)
 
-
-non_crpd <- read_rds("data/non_crpd.rds") |> 
-    mutate(country = str_replace_all(
-    country,
-    c("Bosnia And Herzegovina" = "Bosnia and Herzegovina",
-      "Côte d'Ivoire" = "Cote d'Ivoire",
-      "Guinea Bissau" = "Guinea-Bissau",
-      "Trinidad And Tobago" = "Trinidad and Tobago")
-  )) |>
-  filter(year > 2007)
+# clean the country names in non_crpd_raw 
+non_crpd_raw <- read_rds("data/non_crpd_raw.rds")
 
 # crpd --------------------------------------------------------------------
 
 # the cleaning process above the filter line is to ensure that the later after the amatch(), the matched country names are perfectly matched wit no errors.
 crpd <- read_rds("data/clean-raw/crpd.rds")
-
-#clean crpd$country
-crpd <- crpd %>%
-  filter(country != "European Union" )
-
-# crpd$country |> view()
-# 197 countries in total
-
-# remove the () in country names
-crpd <- crpd %>%
-  mutate(
-    country = if_else(
-      str_detect(country, "\\(.*?\\)"),
-      str_replace_all(country, "\\(.*?\\)", ""),
-      country
-    )
-  )
-crpd$country
-
-# manually clean some country names to make a standard country name list
-crpd <- crpd %>%
-  mutate(
-    # see ?case_match example similarity to case_when()
-    country = case_match(
-      country,
-      "Democratic People's Republic of Korea" ~ "North Korea",
-      "Republic of Korea" ~ "South Korea",
-      "Syrian Arab Republic" ~ "Syria",
-      "Brunei Darussalam" ~ "Brunei", 
-      "Lao People's Democratic Republic" ~ "Laos",
-      "Republic of Moldova" ~ "Moldova",
-      "Viet Nam" ~ "Vietnam",
-      "Russian Federation" ~ "Russia",
-      "State of Palestine" ~ "Palestine",
-      "Türkiye" ~ "Turkey",
-      "United Kingdom of Great Britain and Northern Ireland" ~ "United Kingdom",
-      "United Republic of Tanzania" ~ "Tanzania",
-      "United States of America" ~ "United States",
-      "Côte d'Ivoire" ~ "Cote d'Ivoire",
-      .default = country
-    )
-  )
-
-# remove the space after some country names
-
-crpd <- crpd %>%
-  mutate(country = str_trim(country,side = "right"))
-
-write_rds(crpd, "data/crpd_clean-country.rds")
+# 193 countries in total
 
 # Compare -----------------------------------------------------------------
-
-crpd_clean <- read_rds("data/crpd_clean-country.rds")
-crpd_clean$country
-# after cleaning, there are still 197 countries in crpd
-
-
-messy_country <- unique(non_crpd$country)
-tidy_country <- unique(crpd_clean$country)
+# both non_crpd and crpd 
+messy_country <- unique(non_crpd_raw$country)
+tidy_country <- unique(crpd$country)
 # messy_country |> view()
-# 339 ?
+# 335
 # tidy_country |> view()
-# 197?
-
+# 193
 
 indexes <- amatch(messy_country, tidy_country, maxDist = 1)
 
@@ -93,15 +31,11 @@ compare_df_matched <- compare_df |>
   filter(!is.na(tidy_country))
 to_be_fixed <- subset(compare_df_matched, tidy_country != messy_country)
 
-# all the matched countries are perfectly matched with no typos. 
-# apply this reference code to the full_data set later
+# to_be_fixed should be an empty tibble
 
-
-# now fix all unmatched country names manually
+# now fix all unmatched country names manually, take "Congo for an example"
 compare_df_unmatched <- compare_df |> 
   filter(is.na(tidy_country)) 
-
-
 
 compare_df_unmatched$messy_country |> str_subset("Congo")
 
@@ -140,7 +74,7 @@ regexes <- c(".*Bahamas.*" = "Bahamas",
            ".*Lao.*"= "Laos",
            ".*Micronesia.*" = "Micronesia",
            ".*Moldova.*"= "Moldova",
-           ".*Palestine.*"= "Pakestine",
+           ".*Palestine.*"= "Palestine",
            "Russian Federation" = "Russia",
            ".*Syria.*"= "Syria",
            ".*Tanzania.*"= "Tanzania",
@@ -162,43 +96,77 @@ clean_compare_df_unmatched <- compare_df_unmatched |>
 
 # now try to apply the code to the real data set
 
-# clean non_crpd -------------------------------------------------
- non_crpd <- non_crpd |> 
+# clean non_crpd_raw -------------------------------------------------
+ non_crpd <- non_crpd_raw |> 
    mutate(country = str_replace_all(
      country, 
      regexes
    ))
    
-write_rds(non_crpd, "data/non_crpd_clean.rds")
+write_rds(non_crpd, "data/non_crpd.rds")
 
-non_crpd_clean <- read_rds("data/non_crpd_clean.rds")
-#datatable(non_crpd_clean)
+non_crpd <- read_rds("data/non_crpd.rds")
+non_crpd$country |> unique()
 
+# join crpd, non_crpd, protocol
 protocol <- read_rds("data/clean-raw/protocol.rds") 
-full_data <- crpd_clean |> 
-   left_join(non_crpd_clean, by = join_by(country == country)) |> 
-   left_join(protocol, by = join_by(country == country))
-
-
-# clean the crpd columns from the website that is broken
+full_data <- crpd |> 
+   left_join(non_crpd, by = join_by(country)) |> 
+   left_join(protocol, by = join_by(country))
 
 full_data <- full_data |> 
-  select(-c("optional_protocol_date", "crpd_category", "crpd_category_value")) |> 
-  select(country, crpd_signature_date, crpd_ratification_date, 
-         protocol_sign, aces_or_ratif, everything())
-  
+  group_by(country, year) |> 
+  fill(everything(), .direction = "updown") |> 
+  distinct(country, year, .keep_all = TRUE)
 
-write_rds(full_data,"data/data.rds")
-crpd_study <- read_rds("data/data.rds")
+full_data <- full_data |> 
+  relocate(protocol_sign,aces_or_ratif, .after = "crpd_ratif")
+
+write_csv(full_data, "data/crpd_study.csv")
+write_rds(full_data, "data/crpd_study.rds")
+crpd_study <- read_rds("data/crpd_study.rds")
+crpd_study$country |> unique()
+# 193 countries
+
+# check if there are any empty strings
+crpd_study |> 
+  filter(if_any(everything(), \(x) x == ""))
+
+# crpd_study |> 
+#   filter(country == "Cook Islands") |> 
+#   view()
+
+# Stuart's email
+# 1 Didn’t sign
+# 2 Signed protocol
+# 3 Signed and ratified protocol
+# 4 Signed and ratified protocol and additional optional protocol
+
+# filter for your 2022 and make crpd_catogory
+
+crpd_study <- crpd_study |> 
+  mutate(signed = if_else(!is.na(crpd_sign), TRUE, FALSE),
+         ratified = if_else(!is.na(crpd_ratif),TRUE, FALSE),
+         protocol = if_else((!is.na(protocol_sign)|!is.na(aces_or_ratif)),TRUE, FALSE)
+  )
+# continue here
+crpd_study <- crpd_study |> 
+  mutate(crpd_category = case_when(
+    signed == FALSE & ratified == FALSE & protocol == FALSE ~ "not signed",
+    (signed == TRUE | ratified == TRUE) & protocol == FALSE ~ "signed or ratified convention",
+    (signed == TRUE | ratified == TRUE) & protocol == TRUE ~ "signed or ratified convention with protocol",
+    signed == TRUE & ratified == TRUE & protocol == FALSE ~ "signed and ratified convention",
+    signed == TRUE & ratified == TRUE & protocol == TRUE ~ "signed and ratified convention with protocol"
+  ))
+
+drop_cols <- c("crpd_sign", "crpd_ratif", "protocol_sign", "aces_or_ratif", "signed", "ratified", "protocol")
+crpd_study <- crpd_study |> 
+  select(-all_of(drop_cols)) |> 
+  relocate(crpd_category, .after = country)
 
 
-### next step, clean crpd categories
+crpd_study_2022 <- crpd_study |> 
+  filter (year == 2022 | (country == "Cook Islands" & is.na(year)))
+crpd_study_2022$country
 
-## testing of the country columns are clean in the below data frame)
-# data <- read_rds("data/data.rds")
-# protocol <- read_rds("data/clean-raw/protocol.rds") 
-# a <- data$country |> unique()
-# b <- crpd_clean$country |> unique()
-# c <- data$country |> unique()
-# identical(b, c)
-# identical(a, b)
+non_crpd |> filter(country |> str_detect("Cook"))

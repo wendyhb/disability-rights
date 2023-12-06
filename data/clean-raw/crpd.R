@@ -1,113 +1,88 @@
-#country list for treaty CRPD
 source("R/my-packages.R")
-html_crpd <- read_html("https://tbinternet.ohchr.org/_layouts/15/TreatyBodyExternal/Treaty.aspx?Treaty=CRPD")
-crpd_table <- html_crpd |>
-  html_elements(".rgMasterTable") |> 
+html_raw <- read_html("https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-15&chapter=4&clang=_en")
+raw_table <- html_raw |>
+  html_elements("table") |> 
   html_table() 
-crpd_table <- crpd_table[[1]] 
+raw_table <- raw_table[[12]]
+raw_table <- raw_table |> 
+  janitor::row_to_names(row_number = 1) |> 
+  janitor::clean_names()
+raw <- raw_table 
+raw |> names()
+#[1] "participant"                                   
+#[2] "signature"                                     
+#[3] "formal_confirmation_c_accession_a_ratification"
 
-crpd_table <- crpd_table |> 
-  janitor::clean_names() 
+#  For character columns only, replace any blank strings with NA values
+raw <- raw |> 
+  mutate(across(where(is.character), ~ na_if(.,""))) |> 
+  mutate(crpd_sign = signature |> 
+           str_remove_all("\\t"), .keep = "unused")
+raw <- raw |> 
+  mutate(
+    crpd_ratif = 
+      formal_confirmation_c_accession_a_ratification |> 
+      str_remove_all("\\t") |> 
+      str_remove_all("a$"), .keep = "unused") 
 
-crpd_table <- crpd_table |>  
-  slice(-(1:3)) |> 
-  select(country, 
-         crpd_signature_date = signature_date , 
-         crpd_ratification_date = ratification_date_accession_a_succession_d_date,
-         crpd_entry_into_force_date = entry_into_force_date ) 
 
-crpd_table <- crpd_table |> 
-  mutate(crpd_ratification_date = str_remove(crpd_ratification_date, "\\(a\\)")) 
-
-crpd_table <- crpd_table |> 
+#  delete space at the end of the strings 
+raw <- raw |> 
+  mutate(
+    participant = str_squish(participant),
+    crpd_sign = str_squish(crpd_sign),
+    crpd_ratif = str_squish(crpd_ratif)
+  )
+  
+raw_clean <- raw |> 
   mutate(
     across(
-      c(crpc_signature_date, crpc_ratification_date,crpc_entry_into_force_date), 
-       ~ as.Date(., format = "%d %b %Y")
-      # \(x) as_date(x, format = "%d %b %Y")
-      )
-    )
-
-# CRPD - Convention on the Rights of Persons with Disabilities, 195 countries in total ------------
-# file_path <- paste("data/",i, sep = "")
-
-my_list_1 <- list()
-for(i in 1:195){
-    file_path <- paste("https://tbinternet.ohchr.org/_layouts/15/TreatyBodyExternal/Treaty.aspx?CountryID=",i,"&Lang=en", sep = "")
-    html_crpd <- read_html(file_path)
-    crpd_table_2 <- html_crpd |>
-    html_elements("#ContentPlaceHolder1_JurisGrid") |>
-    html_table()
-    my_list_1[[i]] <- crpd_table_2
-    Sys.sleep(5)
-}
-
-# clean the list and make it into one table for country_opt_protocol------------------------------------------------------------------
-
-ex <- my_list_1[[11]] |> _[[1]]
-exp <- my_list_1[[12]] |> _[[1]]
-
-clean_and_mutate <- function(df) {
-  
-  df %>%  
-    janitor::clean_names() %>%
-    slice(-c(1:3)) %>%
-    filter(treaty_name == "CRPD-OP") |>
-    select(country, optional_protocol_date = date_of_acceptance_non_acceptance)
-}
-
-cleaned_list <- my_list_1 |> map(\(x) x |> _[[1]] |> clean_and_mutate())
-country_opt_protocol <- cleaned_list |> bind_rows()
-write_rds(country_opt_protocol,"data/crpd_webscraped.rds")
-opt_protocol <- read_rds("data/intermediate/crpd_webscraped.rds")
-opt_protocol |> view()
-# combine crpd_table and country_opt_protocol -------------------------------------
-crpd_final <- full_join(crpd_table, country_opt_protocol, by = "country") 
-crpd_final <- crpd_final %>%
-  mutate_all(~na_if(.x, "")) |> 
-  mutate(crpd_category = NA)
-
-crpd_final <- crpd_final |> 
-  mutate(signed = if_else(!is.na(crpd_signature_date), TRUE, FALSE),
-         ratified = if_else(!is.na(crpd_ratification_date),TRUE, FALSE),
-         protocol = if_else(!is.na(optional_protocol_date),TRUE, FALSE)
+      c(crpd_sign, crpd_ratif),
+      ~as.Date(., format = "%d %b %Y"))
   )
 
-crpd_final <- crpd_final |> 
-  mutate(crpd_category = case_when(
-    signed == TRUE & ratified == TRUE & protocol == TRUE ~ "signed & ratified & protocol",
-    signed == TRUE & ratified == TRUE ~ "signed & ratified",
-    signed == TRUE & ratified == FALSE & protocol == TRUE ~ "signed & protocol",
-    signed == TRUE ~ "signed",
-    ratified == TRUE & protocol == TRUE ~ "ratified & protocol",
-    ratified == TRUE ~ "ratified",
-    .default = "none"
+# clean the country names
+crpd <- raw_clean |> 
+  mutate(country = if_else(
+    str_detect(participant, "\\(.*?\\)"),
+    str_replace_all(participant, "\\(.*?\\)", ""),
+    participant
+  ), .keep = "unused"
+  )
+
+crpd <- crpd %>%
+  mutate(
+    # see ?case_match example similarity to case_when()
+    country = case_match(
+      country,
+      "Democratic People's Republic of Korea" ~ "North Korea",
+      "Republic of Korea" ~ "South Korea",
+      "Syrian Arab Republic" ~ "Syria",
+      "Brunei Darussalam" ~ "Brunei",
+      "Lao People's Democratic Republic" ~ "Laos",
+      "Republic of Moldova" ~ "Moldova",
+      "Viet Nam" ~ "Vietnam",
+      "Russian Federation" ~ "Russia",
+      "State of Palestine" ~ "Palestine",
+      "Türkiye" ~ "Turkey",
+      "United Kingdom of Great Britain and Northern Ireland" ~ "United Kingdom",
+      "United Republic of Tanzania" ~ "Tanzania",
+      "United States of America" ~ "United States",
+      "Côte d'Ivoire" ~ "Cote d'Ivoire",
+      .default = country
     )
   )
 
-## NB For the map, if a country Ratified, it is dark blue, period.
-## followed this map but it was made in 2014 so the map is out-dated
-# https://abilitymagazine.com/images/enablemap.jpg
+crpd <- crpd |>  
+  mutate(country = 
+           str_remove_all(country, "\\d+$") |> 
+           str_squish())
 
-crpd_final <- crpd_final |> 
-  mutate(crpd_category_value = case_match(
-    crpd_category, 
-     "none" ~ 1,
-     "signed" ~ 2,
-     "signed & protocol" ~ 3,
-     "signed & ratified" ~ 4,
-     "ratified" ~ 4,
-     "ratified & protocol" ~ 5,
-     "signed & ratified & protocol" ~ 5
-  ))
+crpd <- crpd |> select(country, everything()) |> 
+           filter(country != "European Union")
 
-# only select relevant columns for the research
+write_rds(crpd, "data/clean-raw/crpd.rds") 
 
-crpd_final <- crpd_final |> 
-  select(country, crpd_signature_date, crpd_ratification_date,optional_protocol_date,crpd_category, crpd_category_value)
 
-# write_rds(crpd_final,"data/crpd.rds")
-crpd <- read_rds("data/clean-raw/crpd.rds")
-crpd |> view()
 
-# 198 countries in total(European Union is not removed yet)
+

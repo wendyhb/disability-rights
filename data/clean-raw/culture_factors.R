@@ -39,3 +39,4 @@ culture_factors <- culture_factors |>
 
 culture_factors
 write_rds(culture_factors,"data/culture_factors.rds")
+culture <- read_rds("data/clean-raw/culture_factors.rds")
