@@ -147,26 +147,50 @@ crpd_study |>
 crpd_study <- crpd_study |> 
   mutate(signed = if_else(!is.na(crpd_sign), TRUE, FALSE),
          ratified = if_else(!is.na(crpd_ratif),TRUE, FALSE),
-         protocol = if_else((!is.na(protocol_sign)|!is.na(aces_or_ratif)),TRUE, FALSE)
+         protocol = if_else((!is.na(protocol_sign)|!is.na(aces_or_ratif)), TRUE, FALSE)
   )
 # continue here
 crpd_study <- crpd_study |> 
   mutate(crpd_category = case_when(
-    signed == FALSE & ratified == FALSE & protocol == FALSE ~ "not signed",
-    (signed == TRUE | ratified == TRUE) & protocol == FALSE ~ "signed or ratified convention",
-    (signed == TRUE | ratified == TRUE) & protocol == TRUE ~ "signed or ratified convention with protocol",
-    signed == TRUE & ratified == TRUE & protocol == FALSE ~ "signed and ratified convention",
-    signed == TRUE & ratified == TRUE & protocol == TRUE ~ "signed and ratified convention with protocol"
-  ))
+    !signed & !ratified & !protocol ~ "none",
+    signed & ratified & protocol ~ "signed and ratified convention with protocol",
+    signed & ratified & !protocol ~ "signed and ratified convention",
+    (signed | ratified) & !protocol ~ "signed or ratified convention",
+    (signed | ratified) & protocol ~ "signed or ratified convention with protocol",
+  )) |> 
+  mutate(crpd_category_v = case_match(crpd_category,
+    "none" ~ 1,
+    "signed and ratified convention with protocol" ~ 5,
+    "signed and ratified convention" ~ 3,
+    "signed or ratified convention with protocol" ~ 4,
+     "signed or ratified convention" ~ 2,
+  )) 
 
-drop_cols <- c("crpd_sign", "crpd_ratif", "protocol_sign", "aces_or_ratif", "signed", "ratified", "protocol")
+
+drop_cols <- c("crpd_sign", "crpd_ratif", "protocol_sign", "aces_or_ratif")
 crpd_study <- crpd_study |> 
   select(-all_of(drop_cols)) |> 
-  relocate(crpd_category, .after = country)
+  relocate(crpd_category, .after = country) |> 
+  relocate(crpd_category_v, .after = crpd_category )
+
+crpd_study_2017_2022 <- crpd_study |> 
+  filter (year %in% (2017:2022) | (country == "Cook Islands" & is.na(year)))
+
+
+write_rds(crpd_study_2017_2022,"output/crpd_study_2017-2022.rds")
+write_csv(crpd_study_2017_2022,"output/crpd_study_2017_2022.csv")
 
 
 crpd_study_2022 <- crpd_study |> 
   filter (year == 2022 | (country == "Cook Islands" & is.na(year)))
-crpd_study_2022$country
 
-non_crpd |> filter(country |> str_detect("Cook"))
+write_rds(crpd_study_2022,"output/crpd_study_2022.rds")
+write_csv(crpd_study_2022,"output/crpd_study_2022.csv")
+
+getwd()
+path <- "C:/Users/cyn64/repo/disability-rights/output/crpd_data.xlsx"
+openxlsx2::write_xlsx(
+  list(data_2022 = crpd_study_2022, 
+       data_2017_2022 = crpd_study_2017_2022),
+  path)
+  

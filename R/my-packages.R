@@ -1,10 +1,9 @@
-
 library(tidyverse)
 library(readr)
 library(readxl)
 library(rvest)
 library(xml2)
-
+library(openxlsx2)
 if (!require("DT")) devtools::install_github("rstudio/DT")
 # datatable(mtcars)
 

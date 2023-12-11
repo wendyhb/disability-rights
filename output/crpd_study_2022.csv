@@ -1,0 +1,194 @@
+country,crpd_category,crpd_category_v,year,cpi_score,power_distance,individualism,motivation,uncertainty_avoidance,long_term_orientation,indulgence,democracy_index,democracy_cat,freedom_index,gdp,human_development_index,life_expectancy,expected_years_of_schooling,mean_years_of_schooling,crime_index,safety_index,unemployment_rate,signed,ratified,protocol
+Afghanistan,signed or ratified convention with protocol,4,2022,24,NA,NA,NA,NA,NA,NA,0.32,Authoritarian Regime,10,NA,NA,NA,NA,NA,77,23,NA,FALSE,TRUE,TRUE
+Albania,signed and ratified convention,3,2022,36,NA,NA,NA,NA,NA,NA,6.41,Flawed Democracy,67,6802.8,NA,NA,NA,NA,46.1,53.9,NA,TRUE,TRUE,FALSE
+Algeria,signed and ratified convention with protocol,5,2022,33,NA,NA,NA,NA,NA,NA,3.66,Authoritarian Regime,32,4273.92,NA,NA,NA,NA,53.8,46.2,NA,TRUE,TRUE,TRUE
+Andorra,signed and ratified convention with protocol,5,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,93,41992.79,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Angola,signed or ratified convention with protocol,4,2022,33,NA,NA,NA,NA,NA,NA,3.96,Authoritarian Regime,30,2998.5,NA,NA,NA,NA,66.4,33.6,NA,FALSE,TRUE,TRUE
+Antigua and Barbuda,signed and ratified convention with protocol,5,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,85,18745.17,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Argentina,signed and ratified convention with protocol,5,2022,38,NA,NA,NA,NA,NA,NA,6.85,Flawed Democracy,84,13686.01,NA,NA,NA,NA,64.1,35.9,NA,TRUE,TRUE,TRUE
+Armenia,signed and ratified convention with protocol,5,2022,46,NA,NA,NA,NA,NA,NA,5.63,Hybrid Regime,55,7014.21,NA,NA,NA,NA,22.1,77.9,NA,TRUE,TRUE,TRUE
+Australia,signed and ratified convention with protocol,5,2022,75,NA,NA,NA,NA,NA,NA,8.71,Full Democracy,95,64491.43,NA,NA,NA,NA,43.8,56.2,3.7,TRUE,TRUE,TRUE
+Austria,signed and ratified convention with protocol,5,2022,71,NA,NA,NA,NA,NA,NA,8.2,Full Democracy,93,52131.45,NA,NA,NA,NA,26.1,73.9,4.99,TRUE,TRUE,TRUE
+Azerbaijan,signed and ratified convention with protocol,5,2022,23,NA,NA,NA,NA,NA,NA,2.87,Authoritarian Regime,9,7736.7,NA,NA,NA,NA,32.3,67.7,5.65,TRUE,TRUE,TRUE
+Bahamas,signed and ratified convention,3,2022,64,NA,NA,NA,NA,NA,NA,NA,NA,91,31458.3,NA,NA,NA,NA,62.5,37.5,NA,TRUE,TRUE,FALSE
+Bahrain,signed and ratified convention,3,2022,44,NA,NA,NA,NA,NA,NA,2.52,Authoritarian Regime,12,30152.03,NA,NA,NA,NA,24.4,75.6,NA,TRUE,TRUE,FALSE
+Bangladesh,signed and ratified convention with protocol,5,2022,25,NA,NA,NA,NA,NA,NA,5.99,Hybrid Regime,39,2688.3,NA,NA,NA,NA,63.4,36.6,NA,TRUE,TRUE,TRUE
+Barbados,signed and ratified convention,3,2022,65,NA,NA,NA,NA,NA,NA,NA,NA,95,20018.52,NA,NA,NA,NA,46.6,53.4,NA,TRUE,TRUE,FALSE
+Belarus,signed and ratified convention,3,2022,39,NA,NA,NA,NA,NA,NA,1.99,Authoritarian Regime,8,7904.86,NA,NA,NA,NA,58.4,41.6,3.57,TRUE,TRUE,FALSE
+Belgium,signed and ratified convention with protocol,5,2022,73,NA,NA,NA,NA,NA,NA,7.64,Flawed Democracy,96,49582.83,NA,NA,NA,NA,45.4,54.6,5.56,TRUE,TRUE,TRUE
+Belize,signed and ratified convention,3,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,87,6968.36,NA,NA,NA,NA,51.5,48.5,NA,TRUE,TRUE,FALSE
+Benin,signed and ratified convention with protocol,5,2022,43,NA,NA,NA,NA,NA,NA,4.28,Hybrid Regime,59,1303.22,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Bhutan,signed or ratified convention,2,2022,68,NA,NA,NA,NA,NA,NA,5.54,Hybrid Regime,61,NA,NA,NA,NA,NA,NA,NA,5.95,TRUE,FALSE,FALSE
+Bolivia,signed and ratified convention,3,2022,31,NA,NA,NA,NA,NA,NA,4.51,Hybrid Regime,66,3523.27,NA,NA,NA,NA,58.3,41.7,3.55,TRUE,TRUE,FALSE
+Bosnia and Herzegovina,signed and ratified convention with protocol,5,2022,34,NA,NA,NA,NA,NA,NA,5,Hybrid Regime,53,7585.38,NA,NA,NA,NA,42.2,57.8,12.66,TRUE,TRUE,TRUE
+Botswana,signed or ratified convention,2,2022,60,NA,NA,NA,NA,NA,NA,7.73,Flawed Democracy,72,7737.65,NA,NA,NA,NA,52.4,47.6,23.62,FALSE,TRUE,FALSE
+Brazil,signed and ratified convention with protocol,5,2022,38,NA,NA,NA,NA,NA,NA,6.78,Flawed Democracy,73,8917.67,NA,NA,NA,NA,67,33,9.23,TRUE,TRUE,TRUE
+Brunei,signed and ratified convention,3,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,28,37152.47,NA,NA,NA,NA,29,71,NA,TRUE,TRUE,FALSE
+Bulgaria,signed and ratified convention with protocol,5,2022,43,NA,NA,NA,NA,NA,NA,6.53,Flawed Democracy,79,13772.48,NA,NA,NA,NA,38.7,61.3,4.27,TRUE,TRUE,TRUE
+Burkina Faso,signed and ratified convention with protocol,5,2022,42,NA,NA,NA,NA,NA,NA,3.08,Authoritarian Regime,53,832.88,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Burundi,signed and ratified convention with protocol,5,2022,17,NA,NA,NA,NA,NA,NA,2.13,Authoritarian Regime,14,238.44,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Cabo Verde,signed and ratified convention,3,2022,60,NA,NA,NA,NA,NA,NA,NA,NA,92,3902.59,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+Cambodia,signed and ratified convention with protocol,5,2022,24,NA,NA,NA,NA,NA,NA,3.18,Authoritarian Regime,24,1786.56,NA,NA,NA,NA,50.7,49.3,NA,TRUE,TRUE,TRUE
+Cameroon,signed and ratified convention with protocol,5,2022,26,NA,NA,NA,NA,NA,NA,2.56,Authoritarian Regime,15,1588.48,NA,NA,NA,NA,66.6,33.4,NA,TRUE,TRUE,TRUE
+Canada,signed and ratified convention with protocol,5,2022,74,NA,NA,NA,NA,NA,NA,8.88,Full Democracy,98,54966.49,NA,NA,NA,NA,42.9,57.1,5.28,TRUE,TRUE,TRUE
+Central African Republic,signed and ratified convention with protocol,5,2022,24,NA,NA,NA,NA,NA,NA,1.35,Authoritarian Regime,7,427.06,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Chad,signed and ratified convention with protocol,5,2022,19,NA,NA,NA,NA,NA,NA,1.67,Authoritarian Regime,15,716.8,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Chile,signed and ratified convention with protocol,5,2022,67,NA,NA,NA,NA,NA,NA,8.22,Full Democracy,94,15355.51,NA,NA,NA,NA,54,46,8.25,TRUE,TRUE,TRUE
+China,signed and ratified convention,3,2022,45,NA,NA,NA,NA,NA,NA,1.94,Authoritarian Regime,9,12720.22,NA,NA,NA,NA,29.4,70.6,NA,TRUE,TRUE,FALSE
+Colombia,signed and ratified convention,3,2022,39,NA,NA,NA,NA,NA,NA,6.72,Flawed Democracy,64,6630.28,NA,NA,NA,NA,57.7,42.3,10.55,TRUE,TRUE,FALSE
+Comoros,signed and ratified convention,3,2022,19,NA,NA,NA,NA,NA,NA,3.2,Authoritarian Regime,42,1484.89,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+Congo,signed and ratified convention with protocol,5,2022,21,NA,NA,NA,NA,NA,NA,2.79,Authoritarian Regime,17,2447.99,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Cook Islands,signed or ratified convention with protocol,4,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Costa Rica,signed and ratified convention with protocol,5,2022,54,NA,NA,NA,NA,NA,NA,8.29,Full Democracy,91,13198.82,NA,NA,NA,NA,53.9,46.1,11.32,TRUE,TRUE,TRUE
+Cote d'Ivoire,signed and ratified convention with protocol,5,2022,37,NA,NA,NA,NA,NA,NA,4.22,Hybrid Regime,49,2486.41,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Croatia,signed and ratified convention with protocol,5,2022,50,NA,NA,NA,NA,NA,NA,6.5,Flawed Democracy,85,18413.23,NA,NA,NA,NA,24.1,75.9,6.96,TRUE,TRUE,TRUE
+Cuba,signed and ratified convention,3,2022,45,NA,NA,NA,NA,NA,NA,2.65,Authoritarian Regime,12,NA,NA,NA,NA,NA,30.9,69.1,NA,TRUE,TRUE,FALSE
+Cyprus,signed and ratified convention with protocol,5,2022,52,NA,NA,NA,NA,NA,NA,7.38,Flawed Democracy,93,31283.51,NA,NA,NA,NA,32.1,67.9,6.78,TRUE,TRUE,TRUE
+Czech Republic,signed and ratified convention with protocol,5,2022,56,NA,NA,NA,NA,NA,NA,7.97,Flawed Democracy,91,27638.37,NA,NA,NA,NA,25.5,74.5,2.22,TRUE,TRUE,TRUE
+North Korea,signed and ratified convention,3,2022,NA,NA,NA,NA,NA,NA,NA,1.08,Authoritarian Regime,3,NA,NA,NA,NA,NA,60.3,39.7,NA,TRUE,TRUE,FALSE
+Democratic Republic of the Congo,signed or ratified convention with protocol,4,2022,20,NA,NA,NA,NA,NA,NA,1.48,Authoritarian Regime,19,586.46,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Denmark,signed and ratified convention,3,2022,90,NA,NA,NA,NA,NA,NA,9.28,Full Democracy,97,66983.13,NA,NA,NA,NA,26.6,73.4,4.43,TRUE,TRUE,FALSE
+Djibouti,signed or ratified convention with protocol,4,2022,30,NA,NA,NA,NA,NA,NA,2.74,Authoritarian Regime,24,3136.11,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Dominica,signed and ratified convention with protocol,5,2022,55,NA,NA,NA,NA,NA,NA,NA,NA,93,8414.54,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Dominican Republic,signed and ratified convention with protocol,5,2022,32,NA,NA,NA,NA,NA,NA,6.39,Flawed Democracy,68,10120.55,NA,NA,NA,NA,60.9,39.1,NA,TRUE,TRUE,TRUE
+Ecuador,signed and ratified convention with protocol,5,2022,36,NA,NA,NA,NA,NA,NA,5.69,Hybrid Regime,71,6391.28,NA,NA,NA,NA,57.2,42.8,3.76,TRUE,TRUE,TRUE
+Egypt,signed and ratified convention,3,2022,30,NA,NA,NA,NA,NA,NA,2.93,Authoritarian Regime,18,4295.41,NA,NA,NA,NA,46.6,53.4,NA,TRUE,TRUE,FALSE
+El Salvador,signed and ratified convention with protocol,5,2022,33,NA,NA,NA,NA,NA,NA,5.06,Hybrid Regime,59,5127.32,NA,NA,NA,NA,68.6,31.4,3,TRUE,TRUE,TRUE
+Equatorial Guinea,signed or ratified convention,2,2022,17,NA,NA,NA,NA,NA,NA,1.92,Authoritarian Regime,5,7053.47,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,FALSE
+Estonia,signed and ratified convention with protocol,5,2022,74,NA,NA,NA,NA,NA,NA,7.96,Flawed Democracy,94,28332.63,NA,NA,NA,NA,23.8,76.2,5.57,TRUE,TRUE,TRUE
+Eswatini,signed and ratified convention with protocol,5,2022,30,NA,NA,NA,NA,NA,NA,3.01,Authoritarian Regime,17,4039.52,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Ethiopia,signed and ratified convention,3,2022,38,NA,NA,NA,NA,NA,NA,3.17,Authoritarian Regime,23,1027.59,NA,NA,NA,NA,50.1,49.9,NA,TRUE,TRUE,FALSE
+Fiji,signed and ratified convention with protocol,5,2022,53,NA,NA,NA,NA,NA,NA,5.55,Hybrid Regime,58,5316.66,NA,NA,NA,NA,55.6,44.4,NA,TRUE,TRUE,TRUE
+Finland,signed and ratified convention with protocol,5,2022,87,NA,NA,NA,NA,NA,NA,9.29,Full Democracy,100,50536.62,NA,NA,NA,NA,27.3,72.7,6.72,TRUE,TRUE,TRUE
+France,signed and ratified convention with protocol,5,2022,72,NA,NA,NA,NA,NA,NA,8.07,Full Democracy,89,40963.84,NA,NA,NA,NA,52.4,47.6,7.31,TRUE,TRUE,TRUE
+Gabon,signed and ratified convention with protocol,5,2022,29,NA,NA,NA,NA,NA,NA,3.4,Authoritarian Regime,21,8820.35,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Gambia,signed or ratified convention with protocol,4,2022,34,NA,NA,NA,NA,NA,NA,4.47,Hybrid Regime,47,840.01,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Georgia,signed and ratified convention with protocol,5,2022,56,NA,NA,NA,NA,NA,NA,5.2,Hybrid Regime,58,6627.71,NA,NA,NA,NA,24.3,75.7,NA,TRUE,TRUE,TRUE
+Germany,signed and ratified convention with protocol,5,2022,79,NA,NA,NA,NA,NA,NA,8.8,Full Democracy,94,48432.46,NA,NA,NA,NA,36.4,63.6,3.14,TRUE,TRUE,TRUE
+Ghana,signed and ratified convention with protocol,5,2022,43,NA,NA,NA,NA,NA,NA,6.43,Flawed Democracy,80,2175.86,NA,NA,NA,NA,46.8,53.2,NA,TRUE,TRUE,TRUE
+Greece,signed and ratified convention with protocol,5,2022,52,NA,NA,NA,NA,NA,NA,7.97,Flawed Democracy,87,20732.05,NA,NA,NA,NA,47.4,52.6,12.43,TRUE,TRUE,TRUE
+Grenada,signed and ratified convention,3,2022,52,NA,NA,NA,NA,NA,NA,NA,NA,89,10016.21,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+Guatemala,signed and ratified convention with protocol,5,2022,24,NA,NA,NA,NA,NA,NA,4.68,Hybrid Regime,51,5473.21,NA,NA,NA,NA,58.3,41.7,3.05,TRUE,TRUE,TRUE
+Guinea,signed and ratified convention with protocol,5,2022,25,NA,NA,NA,NA,NA,NA,2.32,Authoritarian Regime,34,1531.66,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Guinea-Bissau,signed and ratified convention with protocol,5,2022,21,NA,NA,NA,NA,NA,NA,2.56,Authoritarian Regime,43,775.83,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Guyana,signed and ratified convention,3,2022,40,NA,NA,NA,NA,NA,NA,6.34,Flawed Democracy,73,18989.79,NA,NA,NA,NA,68.9,31.1,NA,TRUE,TRUE,FALSE
+Haiti,signed or ratified convention with protocol,4,2022,17,NA,NA,NA,NA,NA,NA,2.81,Authoritarian Regime,33,1748.26,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Honduras,signed and ratified convention with protocol,5,2022,23,NA,NA,NA,NA,NA,NA,5.15,Hybrid Regime,47,3040.17,NA,NA,NA,NA,74.2,25.8,NA,TRUE,TRUE,TRUE
+Hungary,signed and ratified convention with protocol,5,2022,42,NA,NA,NA,NA,NA,NA,6.64,Flawed Democracy,69,18463.21,NA,NA,NA,NA,34.3,65.7,3.61,TRUE,TRUE,TRUE
+Iceland,signed and ratified convention with protocol,5,2022,74,NA,NA,NA,NA,NA,NA,9.52,Full Democracy,94,72902.98,NA,NA,NA,NA,23.5,76.5,3.79,TRUE,TRUE,TRUE
+India,signed and ratified convention,3,2022,40,NA,NA,NA,NA,NA,NA,7.04,Flawed Democracy,66,2388.62,NA,NA,NA,NA,44.6,55.4,NA,TRUE,TRUE,FALSE
+Indonesia,signed and ratified convention,3,2022,34,NA,NA,NA,NA,NA,NA,6.71,Flawed Democracy,59,4788,NA,NA,NA,NA,46.1,53.9,3.46,TRUE,TRUE,FALSE
+Iran,signed or ratified convention,2,2022,25,NA,NA,NA,NA,NA,NA,1.96,Authoritarian Regime,14,4387.83,NA,NA,NA,NA,49.1,50.9,NA,FALSE,TRUE,FALSE
+Iraq,signed or ratified convention,2,2022,23,NA,NA,NA,NA,NA,NA,3.13,Authoritarian Regime,29,5937.2,NA,NA,NA,NA,47,53,NA,FALSE,TRUE,FALSE
+Ireland,signed and ratified convention,3,2022,77,NA,NA,NA,NA,NA,NA,9.13,Full Democracy,97,104038.95,NA,NA,NA,NA,45.5,54.5,4.48,TRUE,TRUE,FALSE
+Israel,signed and ratified convention,3,2022,63,NA,NA,NA,NA,NA,NA,7.93,Flawed Democracy,76,54659.75,NA,NA,NA,NA,32.1,67.9,NA,TRUE,TRUE,FALSE
+Italy,signed and ratified convention with protocol,5,2022,56,NA,NA,NA,NA,NA,NA,7.69,Flawed Democracy,90,34157.99,NA,NA,NA,NA,45.2,54.8,8.07,TRUE,TRUE,TRUE
+Jamaica,signed and ratified convention with protocol,5,2022,44,NA,NA,NA,NA,NA,NA,7.13,Flawed Democracy,80,6047.22,NA,NA,NA,NA,67.8,32.2,NA,TRUE,TRUE,TRUE
+Japan,signed and ratified convention,3,2022,73,NA,NA,NA,NA,NA,NA,8.33,Full Democracy,96,33815.32,NA,NA,NA,NA,22.1,77.9,2.6,TRUE,TRUE,FALSE
+Jordan,signed and ratified convention with protocol,5,2022,47,NA,NA,NA,NA,NA,NA,3.17,Authoritarian Regime,33,4204.51,NA,NA,NA,NA,40.2,59.8,NA,TRUE,TRUE,TRUE
+Kazakhstan,signed and ratified convention with protocol,5,2022,36,NA,NA,NA,NA,NA,NA,3.08,Authoritarian Regime,23,11243.67,NA,NA,NA,NA,53.4,46.6,4.86,TRUE,TRUE,TRUE
+Kenya,signed and ratified convention,3,2022,32,NA,NA,NA,NA,NA,NA,5.05,Hybrid Regime,48,2099.3,NA,NA,NA,NA,56.2,43.8,NA,TRUE,TRUE,FALSE
+Kiribati,signed or ratified convention,2,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,93,1701.97,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,FALSE
+Kuwait,signed or ratified convention,2,2022,42,NA,NA,NA,NA,NA,NA,3.83,Authoritarian Regime,37,43233.49,NA,NA,NA,NA,33.4,66.6,NA,FALSE,TRUE,FALSE
+Kyrgyzstan,signed and ratified convention,3,2022,27,NA,NA,NA,NA,NA,NA,3.62,Authoritarian Regime,27,NA,NA,NA,NA,NA,56.6,43.4,NA,TRUE,TRUE,FALSE
+Laos,signed and ratified convention,3,2022,31,NA,NA,NA,NA,NA,NA,1.77,Authoritarian Regime,13,2088.38,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+Latvia,signed and ratified convention with protocol,5,2022,59,NA,NA,NA,NA,NA,NA,7.37,Flawed Democracy,88,21851.11,NA,NA,NA,NA,38.7,61.3,6.81,TRUE,TRUE,TRUE
+Lebanon,signed or ratified convention with protocol,4,2022,24,NA,NA,NA,NA,NA,NA,3.64,Authoritarian Regime,42,NA,NA,NA,NA,NA,46.9,53.1,NA,TRUE,FALSE,TRUE
+Lesotho,signed or ratified convention,2,2022,37,NA,NA,NA,NA,NA,NA,6.19,Flawed Democracy,63,1107.4,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,FALSE
+Liberia,signed and ratified convention with protocol,5,2022,26,NA,NA,NA,NA,NA,NA,5.43,Hybrid Regime,60,754.53,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Libya,signed and ratified convention,3,2022,17,NA,NA,NA,NA,NA,NA,2.06,Authoritarian Regime,9,6716.1,NA,NA,NA,NA,60.3,39.7,NA,TRUE,TRUE,FALSE
+Liechtenstein,signed or ratified convention,2,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,90,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,FALSE,FALSE
+Lithuania,signed and ratified convention with protocol,5,2022,62,NA,NA,NA,NA,NA,NA,7.31,Flawed Democracy,89,24826.79,NA,NA,NA,NA,33.3,66.7,5.96,TRUE,TRUE,TRUE
+Luxembourg,signed and ratified convention with protocol,5,2022,77,NA,NA,NA,NA,NA,NA,8.81,Full Democracy,97,126426.09,NA,NA,NA,NA,35.7,64.3,4.58,TRUE,TRUE,TRUE
+Madagascar,signed and ratified convention with protocol,5,2022,26,NA,NA,NA,NA,NA,NA,5.7,Hybrid Regime,61,505.04,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Malawi,signed and ratified convention,3,2022,34,NA,NA,NA,NA,NA,NA,5.91,Hybrid Regime,66,645.16,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+Malaysia,signed and ratified convention,3,2022,47,NA,NA,NA,NA,NA,NA,7.3,Flawed Democracy,50,11971.93,NA,NA,NA,NA,55.7,44.3,NA,TRUE,TRUE,FALSE
+Maldives,signed and ratified convention,3,2022,40,NA,NA,NA,NA,NA,NA,NA,NA,40,11817.52,NA,NA,NA,NA,54.7,45.3,NA,TRUE,TRUE,FALSE
+Mali,signed and ratified convention with protocol,5,2022,28,NA,NA,NA,NA,NA,NA,3.23,Authoritarian Regime,32,833.3,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Malta,signed and ratified convention with protocol,5,2022,51,NA,NA,NA,NA,NA,NA,7.7,Flawed Democracy,89,33940.95,NA,NA,NA,NA,40.8,59.2,2.92,TRUE,TRUE,TRUE
+Marshall Islands,signed or ratified convention,2,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,93,6727.8,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,FALSE
+Mauritania,signed or ratified convention with protocol,4,2022,30,NA,NA,NA,NA,NA,NA,4.03,Hybrid Regime,35,2190.7,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Mauritius,signed and ratified convention with protocol,5,2022,50,NA,NA,NA,NA,NA,NA,8.14,Full Democracy,86,10216.29,NA,NA,NA,NA,48.9,51.1,NA,TRUE,TRUE,TRUE
+Mexico,signed and ratified convention with protocol,5,2022,31,NA,NA,NA,NA,NA,NA,5.25,Hybrid Regime,60,11091.31,NA,NA,NA,NA,53.7,46.3,3.26,TRUE,TRUE,TRUE
+Micronesia,signed and ratified convention,3,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,92,3741.06,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+Monaco,signed and ratified convention with protocol,5,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,84,NA,NA,NA,NA,NA,25.1,74.9,NA,TRUE,TRUE,TRUE
+Mongolia,signed or ratified convention with protocol,4,2022,33,NA,NA,NA,NA,NA,NA,6.35,Flawed Democracy,84,4946.75,NA,NA,NA,NA,53.7,46.3,6.21,FALSE,TRUE,TRUE
+Montenegro,signed and ratified convention with protocol,5,2022,45,NA,NA,NA,NA,NA,NA,6.45,Flawed Democracy,67,9893.52,NA,NA,NA,NA,41.1,58.9,NA,TRUE,TRUE,TRUE
+Morocco,signed and ratified convention with protocol,5,2022,38,NA,NA,NA,NA,NA,NA,5.04,Hybrid Regime,37,3527.94,NA,NA,NA,NA,49.1,50.9,NA,TRUE,TRUE,TRUE
+Mozambique,signed and ratified convention with protocol,5,2022,26,NA,NA,NA,NA,NA,NA,3.51,Authoritarian Regime,43,541.45,NA,NA,NA,NA,62.8,37.2,NA,TRUE,TRUE,TRUE
+Myanmar,signed or ratified convention,2,2022,23,NA,NA,NA,NA,NA,NA,0.74,Authoritarian Regime,9,1095.7,NA,NA,NA,NA,46.5,53.5,NA,FALSE,TRUE,FALSE
+Namibia,signed and ratified convention with protocol,5,2022,49,NA,NA,NA,NA,NA,NA,6.52,Flawed Democracy,77,4911.33,NA,NA,NA,NA,64.7,35.3,NA,TRUE,TRUE,TRUE
+Nauru,signed or ratified convention,2,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,77,11913.66,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,FALSE
+Nepal,signed and ratified convention with protocol,5,2022,34,NA,NA,NA,NA,NA,NA,4.49,Hybrid Regime,57,1336.55,NA,NA,NA,NA,37.5,62.5,NA,TRUE,TRUE,TRUE
+Netherlands,signed and ratified convention,3,2022,80,NA,NA,NA,NA,NA,NA,9,Full Democracy,97,55985.4,NA,NA,NA,NA,27.9,72.1,3.52,TRUE,TRUE,FALSE
+New Zealand,signed and ratified convention,3,2022,87,NA,NA,NA,NA,NA,NA,9.61,Full Democracy,99,48249.26,NA,NA,NA,NA,43.3,56.7,3.3,TRUE,TRUE,FALSE
+Nicaragua,signed and ratified convention with protocol,5,2022,19,NA,NA,NA,NA,NA,NA,2.5,Authoritarian Regime,23,2255.43,NA,NA,NA,NA,47.9,52.1,NA,TRUE,TRUE,TRUE
+Niger,signed and ratified convention with protocol,5,2022,32,NA,NA,NA,NA,NA,NA,3.73,Authoritarian Regime,51,533.03,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Nigeria,signed and ratified convention with protocol,5,2022,24,NA,NA,NA,NA,NA,NA,4.23,Hybrid Regime,43,2184.42,NA,NA,NA,NA,63.8,36.2,NA,TRUE,TRUE,TRUE
+North Macedonia,signed and ratified convention with protocol,5,2022,40,NA,NA,NA,NA,NA,NA,6.1,Flawed Democracy,67,6591.47,NA,NA,NA,NA,40.9,59.1,14.43,TRUE,TRUE,TRUE
+Norway,signed and ratified convention,3,2022,84,NA,NA,NA,NA,NA,NA,9.81,Full Democracy,100,106148.78,NA,NA,NA,NA,33.8,66.2,3.23,TRUE,TRUE,FALSE
+Oman,signed and ratified convention,3,2022,44,NA,NA,NA,NA,NA,NA,3.12,Authoritarian Regime,24,25056.79,NA,NA,NA,NA,20,80,NA,TRUE,TRUE,FALSE
+Pakistan,signed and ratified convention,3,2022,27,NA,NA,NA,NA,NA,NA,4.13,Hybrid Regime,37,1596.66,NA,NA,NA,NA,42,58,NA,TRUE,TRUE,FALSE
+Palau,signed and ratified convention with protocol,5,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,92,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Panama,signed and ratified convention with protocol,5,2022,36,NA,NA,NA,NA,NA,NA,6.91,Flawed Democracy,83,17357.63,NA,NA,NA,NA,43.9,56.1,8.28,TRUE,TRUE,TRUE
+Papua New Guinea,signed and ratified convention,3,2022,30,NA,NA,NA,NA,NA,NA,5.97,Hybrid Regime,62,3020.27,NA,NA,NA,NA,81.2,18.8,NA,TRUE,TRUE,FALSE
+Paraguay,signed and ratified convention with protocol,5,2022,28,NA,NA,NA,NA,NA,NA,5.89,Hybrid Regime,65,6153.06,NA,NA,NA,NA,49.2,50.8,6.75,TRUE,TRUE,TRUE
+Peru,signed and ratified convention with protocol,5,2022,36,NA,NA,NA,NA,NA,NA,5.92,Hybrid Regime,72,7125.83,NA,NA,NA,NA,67.1,32.9,3.85,TRUE,TRUE,TRUE
+Philippines,signed and ratified convention,3,2022,33,NA,NA,NA,NA,NA,NA,6.73,Flawed Democracy,55,3498.51,NA,NA,NA,NA,42.3,57.7,NA,TRUE,TRUE,FALSE
+Poland,signed and ratified convention,3,2022,55,NA,NA,NA,NA,NA,NA,7.04,Flawed Democracy,81,18321.28,NA,NA,NA,NA,29.8,70.2,2.89,TRUE,TRUE,FALSE
+Portugal,signed and ratified convention with protocol,5,2022,62,NA,NA,NA,NA,NA,NA,7.95,Flawed Democracy,95,24274.52,NA,NA,NA,NA,30.6,69.4,6.01,TRUE,TRUE,TRUE
+Qatar,signed and ratified convention with protocol,5,2022,58,NA,NA,NA,NA,NA,NA,3.65,Authoritarian Regime,25,88046.32,NA,NA,NA,NA,13.8,86.2,0.13,TRUE,TRUE,TRUE
+South Korea,signed and ratified convention with protocol,5,2022,63,NA,NA,NA,NA,NA,NA,8.03,Full Democracy,83,32254.62,NA,NA,NA,NA,26.5,73.5,2.86,TRUE,TRUE,TRUE
+Moldova,signed and ratified convention with protocol,5,2022,39,NA,NA,NA,NA,NA,NA,6.23,Flawed Democracy,62,5562.61,NA,NA,NA,NA,47.4,52.6,0.91,TRUE,TRUE,TRUE
+Romania,signed and ratified convention with protocol,5,2022,46,NA,NA,NA,NA,NA,NA,6.45,Flawed Democracy,83,15892.12,NA,NA,NA,NA,28.8,71.2,5.61,TRUE,TRUE,TRUE
+Russia,signed and ratified convention,3,2022,28,NA,NA,NA,NA,NA,NA,2.28,Authoritarian Regime,19,15345.1,NA,NA,NA,NA,39.6,60.4,3.87,TRUE,TRUE,FALSE
+Rwanda,signed or ratified convention with protocol,4,2022,51,NA,NA,NA,NA,NA,NA,3.1,Authoritarian Regime,22,966.33,NA,NA,NA,NA,24.3,75.7,15.08,FALSE,TRUE,TRUE
+Samoa,signed and ratified convention,3,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,83,3743.21,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+San Marino,signed and ratified convention with protocol,5,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,93,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Sao Tome and Principe,signed or ratified convention with protocol,4,2022,45,NA,NA,NA,NA,NA,NA,NA,NA,84,2404.26,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Saudi Arabia,signed or ratified convention with protocol,4,2022,51,NA,NA,NA,NA,NA,NA,2.08,Authoritarian Regime,7,30436.28,NA,NA,NA,NA,24.7,75.3,5.59,FALSE,TRUE,TRUE
+Senegal,signed and ratified convention with protocol,5,2022,43,NA,NA,NA,NA,NA,NA,5.72,Hybrid Regime,68,1598.74,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Serbia,signed and ratified convention with protocol,5,2022,36,NA,NA,NA,NA,NA,NA,6.33,Flawed Democracy,62,9393.63,NA,NA,NA,NA,38.3,61.7,8.68,TRUE,TRUE,TRUE
+Seychelles,signed and ratified convention with protocol,5,2022,70,NA,NA,NA,NA,NA,NA,NA,NA,79,15874.54,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Sierra Leone,signed and ratified convention with protocol,5,2022,34,NA,NA,NA,NA,NA,NA,5.03,Hybrid Regime,65,461.36,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Singapore,signed and ratified convention,3,2022,83,NA,NA,NA,NA,NA,NA,6.22,Flawed Democracy,47,82807.65,NA,NA,NA,NA,27.6,72.4,3.59,TRUE,TRUE,FALSE
+Slovakia,signed and ratified convention with protocol,5,2022,53,NA,NA,NA,NA,NA,NA,7.07,Flawed Democracy,90,NA,NA,NA,NA,NA,30.2,69.8,NA,TRUE,TRUE,TRUE
+Slovenia,signed and ratified convention with protocol,5,2022,56,NA,NA,NA,NA,NA,NA,7.75,Flawed Democracy,90,29457.4,NA,NA,NA,NA,22.7,77.3,4.01,TRUE,TRUE,TRUE
+Solomon Islands,signed and ratified convention with protocol,5,2022,42,NA,NA,NA,NA,NA,NA,NA,NA,79,2203.19,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Somalia,signed and ratified convention,3,2022,12,NA,NA,NA,NA,NA,NA,NA,NA,7,461.78,NA,NA,NA,NA,58,42,NA,TRUE,TRUE,FALSE
+South Africa,signed and ratified convention with protocol,5,2022,43,NA,NA,NA,NA,NA,NA,7.05,Flawed Democracy,79,6776.48,NA,NA,NA,NA,76.1,23.9,28.84,TRUE,TRUE,TRUE
+Spain,signed and ratified convention with protocol,5,2022,60,NA,NA,NA,NA,NA,NA,8.07,Full Democracy,90,29350.17,NA,NA,NA,NA,33.9,66.1,12.92,TRUE,TRUE,TRUE
+Sri Lanka,signed and ratified convention,3,2022,36,NA,NA,NA,NA,NA,NA,6.47,Flawed Democracy,55,3354.38,NA,NA,NA,NA,41.2,58.8,NA,TRUE,TRUE,FALSE
+St. Kitts and Nevis,signed and ratified convention,3,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,89,20176.75,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+St. Lucia,signed and ratified convention with protocol,5,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,92,11481.5,NA,NA,NA,NA,NA,NA,15.77,TRUE,TRUE,TRUE
+St. Vincent and the Grenadines,signed or ratified convention with protocol,4,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,91,9125.32,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Palestine,signed or ratified convention with protocol,4,2022,NA,NA,NA,NA,NA,NA,NA,3.86,Authoritarian Regime,NA,NA,NA,NA,NA,NA,43.2,56.8,NA,FALSE,TRUE,TRUE
+Sudan,signed and ratified convention with protocol,5,2022,22,NA,NA,NA,NA,NA,NA,2.47,Authoritarian Regime,10,1102.15,NA,NA,NA,NA,44.6,55.4,NA,TRUE,TRUE,TRUE
+Suriname,signed and ratified convention,3,2022,40,NA,NA,NA,NA,NA,NA,6.95,Flawed Democracy,79,5858.29,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+Sweden,signed and ratified convention with protocol,5,2022,83,NA,NA,NA,NA,NA,NA,9.39,Full Democracy,100,55873.22,NA,NA,NA,NA,49,51,7.39,TRUE,TRUE,TRUE
+Switzerland,signed or ratified convention,2,2022,82,NA,NA,NA,NA,NA,NA,9.14,Full Democracy,96,92101.47,NA,NA,NA,NA,21.7,78.3,4.3,FALSE,TRUE,FALSE
+Syria,signed and ratified convention with protocol,5,2022,13,NA,NA,NA,NA,NA,NA,1.43,Authoritarian Regime,1,NA,NA,NA,NA,NA,67.5,32.5,NA,TRUE,TRUE,TRUE
+Tajikistan,signed or ratified convention,2,2022,24,NA,NA,NA,NA,NA,NA,1.94,Authoritarian Regime,8,1054.19,NA,NA,NA,NA,NA,NA,NA,TRUE,FALSE,FALSE
+Thailand,signed and ratified convention with protocol,5,2022,36,NA,NA,NA,NA,NA,NA,6.67,Flawed Democracy,29,6908.8,NA,NA,NA,NA,39.3,60.7,0.94,TRUE,TRUE,TRUE
+Timor-Leste,signed or ratified convention with protocol,4,2022,42,NA,NA,NA,NA,NA,NA,NA,NA,72,2358.41,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Togo,signed and ratified convention with protocol,5,2022,30,NA,NA,NA,NA,NA,NA,2.99,Authoritarian Regime,42,918.38,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Tonga,signed or ratified convention,2,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,79,NA,NA,NA,NA,NA,NA,NA,NA,TRUE,FALSE,FALSE
+Trinidad and Tobago,signed and ratified convention,3,2022,42,NA,NA,NA,NA,NA,NA,7.16,Flawed Democracy,82,18222.26,NA,NA,NA,NA,71.4,28.6,NA,TRUE,TRUE,FALSE
+Tunisia,signed and ratified convention with protocol,5,2022,40,NA,NA,NA,NA,NA,NA,5.51,Hybrid Regime,64,3776.67,NA,NA,NA,NA,44.3,55.7,NA,TRUE,TRUE,TRUE
+Turkey,signed and ratified convention with protocol,5,2022,36,NA,NA,NA,NA,NA,NA,4.35,Hybrid Regime,32,10616.06,NA,NA,NA,NA,39.7,60.3,10.43,TRUE,TRUE,TRUE
+Turkmenistan,signed or ratified convention with protocol,4,2022,19,NA,NA,NA,NA,NA,NA,1.66,Authoritarian Regime,2,NA,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,TRUE
+Tuvalu,signed or ratified convention,2,2022,NA,NA,NA,NA,NA,NA,NA,NA,NA,93,5334.99,NA,NA,NA,NA,NA,NA,NA,FALSE,TRUE,FALSE
+Uganda,signed and ratified convention with protocol,5,2022,26,NA,NA,NA,NA,NA,NA,4.55,Hybrid Regime,34,964.22,NA,NA,NA,NA,56.2,43.8,NA,TRUE,TRUE,TRUE
+Ukraine,signed and ratified convention with protocol,5,2022,33,NA,NA,NA,NA,NA,NA,5.42,Hybrid Regime,61,4533.98,NA,NA,NA,NA,46.9,53.1,NA,TRUE,TRUE,TRUE
+United Arab Emirates,signed and ratified convention with protocol,5,2022,67,NA,NA,NA,NA,NA,NA,2.9,Authoritarian Regime,17,53757.86,NA,NA,NA,NA,15.1,84.9,NA,TRUE,TRUE,TRUE
+United Kingdom,signed and ratified convention with protocol,5,2022,73,NA,NA,NA,NA,NA,NA,8.28,Full Democracy,93,45850.43,NA,NA,NA,NA,46.5,53.5,NA,TRUE,TRUE,TRUE
+Tanzania,signed and ratified convention with protocol,5,2022,38,NA,NA,NA,NA,NA,NA,5.1,Hybrid Regime,34,1192.4,NA,NA,NA,NA,56.3,43.7,NA,TRUE,TRUE,TRUE
+United States,signed or ratified convention,2,2022,69,NA,NA,NA,NA,NA,NA,7.85,Flawed Democracy,83,76398.59,NA,NA,NA,NA,48.2,51.8,3.65,TRUE,FALSE,FALSE
+Uruguay,signed and ratified convention with protocol,5,2022,74,NA,NA,NA,NA,NA,NA,8.91,Full Democracy,97,20795.04,NA,NA,NA,NA,51.4,48.6,7.87,TRUE,TRUE,TRUE
+Uzbekistan,signed and ratified convention,3,2022,31,NA,NA,NA,NA,NA,NA,2.12,Authoritarian Regime,11,2255.15,NA,NA,NA,NA,33.8,66.2,NA,TRUE,TRUE,FALSE
+Vanuatu,signed and ratified convention,3,2022,48,NA,NA,NA,NA,NA,NA,NA,NA,82,3010.29,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,FALSE
+Venezuela,signed or ratified convention,2,2022,14,NA,NA,NA,NA,NA,NA,2.23,Authoritarian Regime,14,NA,NA,NA,NA,NA,83.6,16.4,NA,FALSE,TRUE,FALSE
+Vietnam,signed and ratified convention,3,2022,42,NA,NA,NA,NA,NA,NA,2.73,Authoritarian Regime,19,4163.51,NA,NA,NA,NA,45.8,54.2,1.54,TRUE,TRUE,FALSE
+Yemen,signed and ratified convention with protocol,5,2022,16,NA,NA,NA,NA,NA,NA,1.95,Authoritarian Regime,9,676.93,NA,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE
+Zambia,signed and ratified convention with protocol,5,2022,33,NA,NA,NA,NA,NA,NA,5.8,Hybrid Regime,51,1487.91,NA,NA,NA,NA,46.3,53.7,NA,TRUE,TRUE,TRUE
+Zimbabwe,signed or ratified convention with protocol,4,2022,23,NA,NA,NA,NA,NA,NA,2.92,Authoritarian Regime,28,1267,NA,NA,NA,NA,59.7,40.3,NA,FALSE,TRUE,TRUE
