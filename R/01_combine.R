@@ -1,24 +1,23 @@
 source("R/my-packages.R")
-path <- "data/clean-raw/"
 files <- list.files(path, pattern = "\\.rds$") |> 
   as.vector()
 
 
 # crpd and protocol have no year column, so its excluded for full_join()
 
-# [1] "cpi.rds"            
-# [2] "crpd.rds"           
-# [3] "culture_factors.rds"
-# [4] "democ.rds"          
-# [5] "freedom.rds"        
-# [6] "gdp.rds"            
-# [7] "life_exp.rds"       
-# [8] "protocol.rds"       
-# [9] "safety.rds"         
+# [1] "corruption_index.rds"               
+# [2] "convention.rds"    
+# [3] "culture.rds"   
+# [4] "democracy.rds"             
+# [5] "freedom.rds"           
+# [6] "gdp.rds"               
+# [7] "life_exp.rds"          
+# [8] "protocol.rds"
+# [9] "safety.rds"            
 # [10] "unemployment.rds"   
 
-
-files <- files[!files %in% c("crpd.rds","protocol.rds")]
+path <- "data/clean-raw/"
+files <- files[!files %in% c("convention.rds","protocol.rds")]
 
   
 my_list <- list()
@@ -38,7 +37,7 @@ my_list <- my_list[names(my_list)]
 # then the result with the third element of the list
 # and so on
 
-non_crpd <- Reduce(
+data_no_convention_protocol <- Reduce(
   \(x,y) full_join(x, y, by = join_by(country, year)),
   my_list
   )
@@ -58,14 +57,14 @@ non_crpd <- Reduce(
 
 # It mimics:
 
-# non_crpd <- full_join(cpi, democ, by = c("country","year")) |> 
+# non_crpd <- full_join(corruption_index, democracy, by = c("country","year")) |> 
 #   full_join(gdp, by = c("country", "year")) |>
 #   full_join(safety, by = c("country", "year"))|>
-#   full_join(culture_factors, by = c("country", "year")) |>
+#   full_join(culture, by = c("country", "year")) |>
 #   full_join(life_exp, by = c("country", "year"))|>
 #   full_join(unemployment, by = c("country", "year"))
 
-non_crpd <- non_crpd |> 
+data_no_convention_protocol <- data_no_convention_protocol |> 
   mutate(country = str_replace_all(
     country,
     c("Bosnia And Herzegovina" = "Bosnia and Herzegovina",
@@ -75,10 +74,10 @@ non_crpd <- non_crpd |>
       str_squish()
   ) 
 
-non_crpd_raw <- non_crpd |> 
+data_no_convention_protocol <- data_no_convention_protocol |> 
   filter(year > 2007) |> 
   arrange(country, desc(year))
 
-write_rds(non_crpd, "data/non_crpd_raw.rds")
+write_rds(data_no_convention_protocol, "data/data_no_convention_protocol.rds")
 
 

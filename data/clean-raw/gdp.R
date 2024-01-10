@@ -1,6 +1,6 @@
 # GDP ---------------------------------------------------------------------
 
-path_gdp <- "data-raw/GDP_1960-2022_2023-10-30.csv"
+path_gdp <- "data-raw/renamed/GDP_1960-2022_2023-10-30.csv"
 gdp_table <- read_csv(path_gdp, col_names = TRUE, skip = 4)
 names(gdp_table)
 head(gdp_table)

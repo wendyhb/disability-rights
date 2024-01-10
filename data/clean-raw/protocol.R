@@ -20,7 +20,7 @@ raw <- raw |>
           str_remove_all("\\t"))
 raw <- raw |> 
  mutate(
-   aces_or_ratif = 
+   protocol_ratif = 
      formal_confirmation_c_accession_a_ratification |> 
           str_remove_all("\\t") |> 
           str_remove_all("a$")) |> 
@@ -31,7 +31,7 @@ raw <- raw |>
   mutate(
     participant = str_squish(participant),
     protocol_sign = str_squish(protocol_sign),
-    aces_or_ratif = str_squish(aces_or_ratif)
+    protocol_ratif = str_squish(protocol_ratif)
    )
      
 raw_clean <- raw |> 
@@ -39,7 +39,7 @@ raw_clean <- raw |>
 raw_clean <- raw_clean |> 
   mutate(
     across(
-      c(protocol_sign, aces_or_ratif),
+      c(protocol_sign, protocol_ratif),
       ~as.Date(., format = "%d %b %Y"))
   )
 
@@ -83,7 +83,7 @@ protocol <- protocol |>
 protocol <- protocol |> 
   select(-participant, -formal_confirmation_c_accession_a_ratification)
 
-write_rds(protocol, "data/clean-raw/protocol.rds") 
+write_rds(protocol, "data/clean-raw/protocol_countries.rds") 
 
 
 

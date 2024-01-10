@@ -1,6 +1,6 @@
 # unemployment rate -------------------------------------------------------
 
-path_unemploy<- "data-raw/unemployment_rate_2023-10-31.csv"
+path_unemploy<- "data-raw/renamed/unemployment_rate_2023-10-31.csv"
 unemploy_table <- read_csv(path_unemploy, col_names = TRUE, skip = 4)
 names(unemploy_table)
 head(unemploy_table)

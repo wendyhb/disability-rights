@@ -1,6 +1,6 @@
 # life_expectancy ---------------------------------------------------------
 
-html_life_exp <-"data-raw/life_expectancy_2021_2023-10-30.xlsx"
+html_life_exp <-"data-raw/renamed/life_expectancy_2021_2023-10-30.xlsx"
 life_exp_table <- read_xlsx(html_life_exp, col_names = FALSE)
 
 names(life_exp_table) <- glue::glue(

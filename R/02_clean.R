@@ -2,19 +2,19 @@
 source("R/my-packages.R")
 library(stringdist)
 
-# clean the country names in non_crpd_raw 
-non_crpd_raw <- read_rds("data/non_crpd_raw.rds")
+# clean the country names for the combined variables
+df_no_conv_prot <- read_rds("data/data_no_convention_protocol.rds")
 
-# crpd --------------------------------------------------------------------
+# country list from the convention website --------------------------------------------------------------------
 
 # the cleaning process above the filter line is to ensure that the later after the amatch(), the matched country names are perfectly matched wit no errors.
-crpd <- read_rds("data/clean-raw/crpd.rds")
+convention <- read_rds("data/clean-raw/convention.rds")
 # 193 countries in total
 
-# Compare -----------------------------------------------------------------
-# both non_crpd and crpd 
-messy_country <- unique(non_crpd_raw$country)
-tidy_country <- unique(crpd$country)
+# Compare the country list -----------------------------------------------------------------
+# convention countries vs countries from other varibles
+messy_country <- unique(df_no_conv_prot$country)
+tidy_country <- unique(convention$country)
 # messy_country |> view()
 # 335
 # tidy_country |> view()
@@ -94,45 +94,46 @@ clean_compare_df_unmatched <- compare_df_unmatched |>
 
 # unmatched countries are cleaned
 
-# now try to apply the code to the real data set
+# now try to apply the code to the combined data set
 
-# clean non_crpd_raw -------------------------------------------------
- non_crpd <- non_crpd_raw |> 
+# clean vars_exclude_convention_protocol -------------------------------------------------
+data_clean_no_convention_protocol <- df_no_conv_prot|> 
    mutate(country = str_replace_all(
      country, 
      regexes
    ))
    
-write_rds(non_crpd, "data/non_crpd.rds")
+write_rds(data_clean_no_convention_protocol,
+          "data/data_clean_no_convention_protocol.rds")
 
-non_crpd <- read_rds("data/non_crpd.rds")
-non_crpd$country |> unique()
+data_clean_no_convention_protocol  <- read_rds("data/data_clean_no_convention_protocol.rds")
+data_clean_no_convention_protocol $country |> unique()
 
-# join crpd, non_crpd, protocol
+# join convention,  protocol, data_exclude_conven_proto_clean_country_name
 protocol <- read_rds("data/clean-raw/protocol.rds") 
-full_data <- crpd |> 
-   left_join(non_crpd, by = join_by(country)) |> 
+data_combined <- convention |> 
+   left_join(data_clean_no_convention_protocol, by = join_by(country)) |> 
    left_join(protocol, by = join_by(country))
 
-full_data <- full_data |> 
+data_combined <- data_combined |> 
   group_by(country, year) |> 
   fill(everything(), .direction = "updown") |> 
   distinct(country, year, .keep_all = TRUE)
 
-full_data <- full_data |> 
-  relocate(protocol_sign,aces_or_ratif, .after = "crpd_ratif")
+data_combined <- data_combined |> 
+  relocate(protocol_sign,protocol_ratif, .after = "crpd_ratif")
 
-write_csv(full_data, "data/crpd_study.csv")
-write_rds(full_data, "data/crpd_study.rds")
-crpd_study <- read_rds("data/crpd_study.rds")
-crpd_study$country |> unique()
+write_csv(data_combined, "output/data_report.csv")
+write_rds(data_combined, "output/data_report.rds")
+data_combined <- read_rds("output/data_report.rds")
+data_combined$country |> unique()
 # 193 countries
 
 # check if there are any empty strings
-crpd_study |> 
+data_combined|> 
   filter(if_any(everything(), \(x) x == ""))
 
-# crpd_study |> 
+# convention |> 
 #   filter(country == "Cook Islands") |> 
 #   view()
 
@@ -144,53 +145,55 @@ crpd_study |>
 
 # filter for your 2022 and make crpd_catogory
 
-crpd_study <- crpd_study |> 
-  mutate(signed = if_else(!is.na(crpd_sign), TRUE, FALSE),
-         ratified = if_else(!is.na(crpd_ratif),TRUE, FALSE),
-         protocol = if_else((!is.na(protocol_sign)|!is.na(aces_or_ratif)), TRUE, FALSE)
+# Do not need these lines
+data_combined <- data_combined |>
+  mutate(crpd_signed = if_else(!is.na(crpd_sign), TRUE, FALSE),
+         crpd_ratified = if_else(!is.na(crpd_ratif),TRUE, FALSE),
+         protocol_signed = if_else(!is.na(protocol_sign), TRUE, FALSE),
+         protocol_ratified = if_else (!is.na(protocol_ratif), TRUE, FALSE)
   )
-# continue here
-crpd_study <- crpd_study |> 
+
+data_combined  <- data_combined  |> 
   mutate(crpd_category = case_when(
-    !signed & !ratified & !protocol ~ "none",
-    signed & ratified & protocol ~ "signed and ratified convention with protocol",
-    signed & ratified & !protocol ~ "signed and ratified convention",
-    (signed | ratified) & !protocol ~ "signed or ratified convention",
-    (signed | ratified) & protocol ~ "signed or ratified convention with protocol",
+    crpd_ratified & protocol_ratified ~ "ratified both crpd and protocol",
+    crpd_ratified & !protocol_ratified ~ "ratified protocol",
+    crpd_signed & protocol_signed ~ "signed both crpd and protocol",
+    crpd_signed & !protocol_signed  ~ "only signed crpd",
   )) |> 
   mutate(crpd_category_v = case_match(crpd_category,
-    "none" ~ 1,
-    "signed and ratified convention with protocol" ~ 5,
-    "signed and ratified convention" ~ 3,
-    "signed or ratified convention with protocol" ~ 4,
-     "signed or ratified convention" ~ 2,
+    "ratified both crpd and protocol" ~ 4,
+    "ratified protocol" ~ 3,
+    "signed both crpd and protocol" ~ 2,
+    "only signed crpd" ~ 1,
   )) 
 
+# crpd_study |> filter(year == 2022|is.na(year)) |> view()
+drop_cols <- c("crpd_sign", "crpd_ratif", "protocol_sign", "protocol_ratif",
+               "crpd_signed","crpd_ratified", "protocol_signed","protocol_ratified")
 
-drop_cols <- c("crpd_sign", "crpd_ratif", "protocol_sign", "aces_or_ratif")
-crpd_study <- crpd_study |> 
+data_combined  <- data_combined  |> 
   select(-all_of(drop_cols)) |> 
   relocate(crpd_category, .after = country) |> 
   relocate(crpd_category_v, .after = crpd_category )
 
-crpd_study_2017_2022 <- crpd_study |> 
+data_report_2017_2022 <- data_combined  |> 
   filter (year %in% (2017:2022) | (country == "Cook Islands" & is.na(year)))
 
 
-write_rds(crpd_study_2017_2022,"output/crpd_study_2017-2022.rds")
-write_csv(crpd_study_2017_2022,"output/crpd_study_2017_2022.csv")
+write_rds(data_report_2017_2022,"output/data-report_2017-2022.rds")
+write_csv(data_report_2017_2022,"output/data-report_2017-2022.csv")
 
 
-crpd_study_2022 <- crpd_study |> 
+data_report_2022 <- data_combined  |> 
   filter (year == 2022 | (country == "Cook Islands" & is.na(year)))
 
-write_rds(crpd_study_2022,"output/crpd_study_2022.rds")
-write_csv(crpd_study_2022,"output/crpd_study_2022.csv")
+write_rds(data_report_2022,"output/data-report_2022.rds")
+write_csv(data_report_2022,"output/data-report_2022.csv")
 
-getwd()
-path <- "C:/Users/cyn64/repo/disability-rights/output/crpd_data.xlsx"
+
+path <- "C:/Users/cyn64/repo/disability-rights/output/data-report_booklet.xlsx"
 openxlsx2::write_xlsx(
-  list(data_2022 = crpd_study_2022, 
-       data_2017_2022 = crpd_study_2017_2022),
+  list(data_2022 = data_report_2022, 
+       data_2017_2022 = data_report_2017_2022),
   path)
   
