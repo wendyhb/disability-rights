@@ -26,17 +26,17 @@ for (i in vars) {
   value <- text[c(TRUE, FALSE)] |> as.numeric()
   list_of_tibbles[[i]]<- tibble(country, value, variable = i)
 }
-culture_factors <- list_of_tibbles |> 
+culture <- list_of_tibbles |> 
   bind_rows() |> 
   pivot_wider(names_from = variable, values_from = value) |> 
   janitor::clean_names()
 
-culture_factors <- culture_factors |> 
+culture <- culture |> 
   mutate(country = country |> 
           str_to_title() |> 
            str_replace("\\sAnd"," and"), year = as.integer(2023))
 
 
-culture_factors
-write_rds(culture_factors,"data/culture_factors.rds")
-culture <- read_rds("data/clean-raw/culture_factors.rds")
+culture
+write_rds(culture,"data/clean-raw/culture.rds")
+culture <- read_rds("data/clean-raw/culture.rds")

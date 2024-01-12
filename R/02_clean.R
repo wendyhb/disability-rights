@@ -123,9 +123,9 @@ data_combined <- data_combined |>
 data_combined <- data_combined |> 
   relocate(protocol_sign,protocol_ratif, .after = "crpd_ratif")
 
-write_csv(data_combined, "output/data_report.csv")
-write_rds(data_combined, "output/data_report.rds")
-data_combined <- read_rds("output/data_report.rds")
+write_csv(data_combined, "output/data-report.csv")
+write_rds(data_combined, "output/data-report.rds")
+data_combined <- read_rds("output/data-report.rds")
 data_combined$country |> unique()
 # 193 countries
 

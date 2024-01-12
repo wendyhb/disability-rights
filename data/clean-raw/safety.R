@@ -2,7 +2,9 @@
  
 # use loops and map to get different years
 # after that add year columns to every table
+source("R/my-packages.R")
 years <- 2012:2023
+results_list <- list()
 for (i in seq_along(years)){
   ## 2012 and 2013 URLs are written YYYY-Q1
   q <- if (years[i] %in% c(2012, 2013)) "-Q1" else ""
