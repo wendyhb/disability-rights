@@ -175,13 +175,14 @@ data_combined  <- data_combined  |>
   select(-all_of(drop_cols)) |> 
   relocate(crpd_category, .after = country) |> 
   relocate(crpd_category_v, .after = crpd_category )
+write_rds(data_combined, "output/data_combined.rds")
 
-data_report_2017_2022 <- data_combined  |> 
-  filter (year %in% (2017:2022) | (country == "Cook Islands" & is.na(year)))
+data_report_2017_2023 <- data_combined  |> 
+  filter (year %in% (2017:2023) | (country == "Cook Islands" & is.na(year)))
 
 
-write_rds(data_report_2017_2022,"output/data-report_2017-2022.rds")
-write_csv(data_report_2017_2022,"output/data-report_2017-2022.csv")
+write_rds(data_report_2017_2023,"output/data-report_2017-2023.rds")
+write_csv(data_report_2017_2023,"output/data-report_2017-2023.csv")
 
 
 data_report_2022 <- data_combined  |> 

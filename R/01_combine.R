@@ -1,4 +1,5 @@
 source("R/my-packages.R")
+path <- "data/clean-raw/"
 files <- list.files(path, pattern = "\\.rds$") |> 
   as.vector()
 
@@ -16,7 +17,7 @@ files <- list.files(path, pattern = "\\.rds$") |>
 # [9] "safety.rds"            
 # [10] "unemployment.rds"   
 
-path <- "data/clean-raw/"
+
 files <- files[!files %in% c("convention.rds","protocol.rds")]
 
   
