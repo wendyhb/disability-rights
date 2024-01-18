@@ -171,30 +171,66 @@ data_combined  <- data_combined  |>
 drop_cols <- c("crpd_sign", "crpd_ratif", "protocol_sign", "protocol_ratif",
                "crpd_signed","crpd_ratified", "protocol_signed","protocol_ratified")
 
+data_combined |> names()
 data_combined  <- data_combined  |> 
   select(-all_of(drop_cols)) |> 
-  relocate(crpd_category, .after = country) |> 
-  relocate(crpd_category_v, .after = crpd_category )
+  select(country, crpd_category, crpd_category_v, year, 
+         power_distance, individualism, motivation,
+         uncertainty_avoidance, long_term_orientation,
+         indulgence, 
+         democracy_index, democracy_cat, 
+         masculinity_index,
+         everything())
+  # relocate(crpd_category, .after = country) |> 
+  # relocate(crpd_category_v, .after = crpd_category ) |> 
+  # relocate(corruption_score, .after = indulgence) |> 
+  # relocate(masculinity_index, .after = democracy_cat)
+
 write_rds(data_combined, "output/data_combined.rds")
 
 data_report_2017_2023 <- data_combined  |> 
-  filter (year %in% (2017:2023) | (country == "Cook Islands" & is.na(year)))
+  filter (year %in% (2017:2023) | (
+    country == "Cook Islands" & is.na(year)))
 
 
 write_rds(data_report_2017_2023,"output/data-report_2017-2023.rds")
 write_csv(data_report_2017_2023,"output/data-report_2017-2023.csv")
 
 
-data_report_2022 <- data_combined  |> 
-  filter (year == 2022 | (country == "Cook Islands" & is.na(year)))
 
-write_rds(data_report_2022,"output/data-report_2022.rds")
-write_csv(data_report_2022,"output/data-report_2022.csv")
+# fill the variables which are not year-based, make a note in the table/paper -------------------------
+data_report_2017_2023 |> names()
+
+data_report_2017_2023_filled <- data_report_2017_2023 |> 
+  group_by(country) |> 
+  fill(
+    power_distance,
+    individualism,
+    motivation,
+    uncertainty_avoidance,
+    long_term_orientation,
+    indulgence,
+    masculinity_index,
+    .direction = "down"
+  )
+
+data_report_2017_2023_filled <- data_report_2017_2023_filled |> 
+  fill(democracy_cat,
+       .direction = "up")
+
+data_report_2017_2023_filled <- data_report_2017_2023_filled |> 
+  fill(life_expectancy, expected_years_of_schooling, mean_years_of_schooling,
+       .direction = "updown")
+
+
+# output ------------------------------------------------------------------
 
 
 path <- "C:/Users/cyn64/repo/disability-rights/output/data-report_booklet.xlsx"
 openxlsx2::write_xlsx(
-  list(data_2022 = data_report_2022, 
-       data_2017_2022 = data_report_2017_2022),
+  list(data_2017_2023_filled = data_report_2017_2023_filled,
+       data_2017_2023 = data_report_2017_2023),
   path)
   
+write_rds(data_report_2017_2023_filled,"output/data-report_2017-2023_filled.rds")
+write_csv(data_report_2017_2023_filled,"output/data-report_2017-2023_filled.csv")

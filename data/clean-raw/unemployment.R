@@ -15,4 +15,6 @@ unemployment <- unemploy_table |>
   janitor::clean_names() |> 
   mutate(country = country_name, unemployment_rate, year = year |> as.integer(), .keep = "none") |> 
   relocate(country)
-write_rds(unemployment, "data/unemployment.rds")
+write_rds(unemployment, "data/clean-raw/unemployment.rds")
+my_var<- read_rds("data/clean-raw/unemployment.rds")
+

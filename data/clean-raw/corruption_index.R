@@ -13,7 +13,7 @@ corruption_index <- corruption_index_table |>
   pivot_longer(
     cols = c(cpi_score_2022:cpi_score_2012),
     names_to = "year",
-    values_to = "cpi_score") |> 
+    values_to = "corruption_score") |> 
   mutate(year = (year |> str_extract(".{0,4}$") |> as.integer()))
 head(corruption_index)
 write_rds(corruption_index,"data/clean-raw/corruption_index.rds")
