@@ -225,12 +225,14 @@ data_report_2017_2023_filled <- data_report_2017_2023_filled |>
 
 # output ------------------------------------------------------------------
 
-
-path <- "C:/Users/cyn64/repo/disability-rights/output/data-report_booklet.xlsx"
+path <- "output/data-report_booklet.xlsx"
 openxlsx2::write_xlsx(
   list(data_2017_2023_filled = data_report_2017_2023_filled,
        data_2017_2023 = data_report_2017_2023),
-  path)
+  path,
+  na.strings = ""
+  ) 
+
   
 write_rds(data_report_2017_2023_filled,"output/data-report_2017-2023_filled.rds")
 write_csv(data_report_2017_2023_filled,"output/data-report_2017-2023_filled.csv")

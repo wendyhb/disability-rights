@@ -12,12 +12,13 @@ gdp_long <- gdp_table |>
   pivot_longer(
     cols = c(year_1960:year_2022),
     names_to = "year",
-    values_to = "gdp"
-  ) |> 
-  mutate(country = country_name, gdp, year, .keep = "none") |> 
+    values_to = "dgp_per_capita") |> 
+  mutate(country = country_name, dgp_per_capita = dgp_per_capita, year, .keep = "none") |> 
   relocate(country)
 
-gdp_long <- gdp_long |>  mutate(gdp = round(gdp, 2), year = str_remove(year, "year_")) |> 
+gdp_long <- gdp_long |>  
+  mutate(dgp_per_capita = round(dgp_per_capita, 2), 
+         year = str_remove(year, "year_")) |> 
   mutate(year= year |> as.integer())
 
 write_rds(gdp_long,"data/gdp.rds")

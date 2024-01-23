@@ -12,7 +12,8 @@ masculinity_index <- masculinity_df[[2]] |>
   slice(-1) |> 
   rename(country = x1, masculinity_index = x4) |> 
   mutate(year = 2023) |> 
-  filter(!country %in% c("Taiwan","Hong Kong"))
+  filter(!country %in% c("Taiwan","Hong Kong")) |> 
+  mutate(masculinity_index = masculinity_index |> as.numeric())
 write_rds(masculinity_index, "data/clean-raw/masculinity_index.rds")
 # 64 countries in total
 
