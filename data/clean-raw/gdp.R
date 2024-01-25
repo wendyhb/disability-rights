@@ -21,5 +21,6 @@ gdp_long <- gdp_long |>
          year = str_remove(year, "year_")) |> 
   mutate(year= year |> as.integer())
 
-write_rds(gdp_long,"data/gdp.rds")
+write_rds(gdp_long,"data/clean-raw/gdp.rds")
+gdp<-read_rds("data/clean-raw/gdp.rds")
 

@@ -6,18 +6,35 @@ df_2022 <-df_2022 |>
   select(-c(democracy_cat,year, crpd_category))
 
 
+# Create income groups based on gdp ---------------------------------------
+# df_2022 <- df_2022 |> 
+#   mutate(income_group = case_when(
+#     gdp < 1085 ~ "Low income",
+#     gdp < 4256 ~ "Lower-middle income",
+#     gdp < 13206~ "Upper-middle income",
+#     gdp > 13205~ "High income",
+#     .default = NA
+#   )) |> 
+#   relocate(income_group, .after = "country")
+
+
+
+
 # Create Model ------------------------------------------------------------
 
 
-df_2022 <- df_2022 |> 
+df_2022 <- df_2022 |>
   pivot_longer(cols = (power_distance:unemployment_rate),
                names_to = "vars",
                values_to = "value" )
 
+
+
 df_2022 <- df_2022 |> 
-  group_by(vars) |> 
+   group_by(vars) |> 
   nest() 
-  
+
+
 df_2022 <- df_2022 |> 
   mutate(
     data_complete = map(data, \(x) drop_na(x)),
@@ -47,34 +64,17 @@ models <- models |>
   ) |> 
   unnest(rsq, keep_empty = TRUE)
 
-models<- models |> arrange(desc(rsq))
+models <- models |> arrange(desc(rsq))
 
-# Create a vector of 20 colors from the "Set3" palette
-colorblind_light <- c("#ff99cc", "#33a02c", "#8B2500", "#006400", "#6a3d9a",
-                      "#a6cee3", "#cc33ff", "lightsteelblue4", "#66ff66","#0000FF",
-                      "burlywood4", "darkslategray4", "#3498db", "#bcbd22", "#ffcc00",
-                      "#66ffff", "#e67e22", "#473C8B", "#292929", "#e74c3c")
-
+plot_mod <- models |>
+  filter(!is.na(rsq)) |>
+  ggplot(aes(rsq,reorder(vars, rsq)))+
+  geom_point()
 
 
-# Print the vector of colors
-
-models |> 
-  ggplot(aes(rsq, reorder(vars, rsq)))+
-  geom_point(aes(colour = vars))+
-  scale_colour_manual(values = colorblind_light)
-
-
-
-#note: the map() above can be written as below
-# models <- models |> 
-#   mutate(
-#     tidy   = model |> map(\(x) broom::tidy (x)),
-#     glance = model |> map(\(x)broom::glance (x)),
-#     augment= model |> map(model,\(x)broom::augment (x))
-#   )
-
-models |> head(1) |> View()
+plot_mod_2 <- plot_mod_2 +
+  labs(x = "R^2",
+       y = "variables")
 
 # Broom -------------------------------------------------------------------
 
