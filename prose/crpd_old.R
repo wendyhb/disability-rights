@@ -109,7 +109,7 @@ crpd_final <- crpd_final |>
   select(country, crpd_signature_date, crpd_ratification_date,optional_protocol_date,crpd_category, crpd_category_value)
 
 # write_rds(crpd_final,"data/crpd.rds")
-crpd_tidy <- read_rds("data/clean-raw/crpd.rds")
+crpd_tidy <- read_rds("data/subsets/crpd.rds")
 crpd_tidy <- crpd_tidy |> 
   select(- c("optional_protocol_date","crpd_category", "crpd_category_value")) |> 
   mutate(country = country, 

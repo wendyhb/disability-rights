@@ -1,5 +1,8 @@
 library(gt)
+library(glue)
+library(janitor)
 library(tidyverse)
+library(here)
 library(readr)
 library(readxl)
 library(rvest)
