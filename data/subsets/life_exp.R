@@ -31,5 +31,5 @@ life_exp <- life_exp |>
     ) |> 
   suppressWarnings()
   
-write_rds(life_exp, "data/life_exp.rds")
+write_rds(life_exp, "data/subsets/life_exp.rds")
 
