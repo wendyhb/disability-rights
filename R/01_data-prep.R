@@ -35,7 +35,7 @@ dat <- dat  |>
 
 ## Fill the variables which don't change much by year, 
 ## Make a note in the table/paper
-dat <- dat |> 
+dat_filled <- dat |> 
   fill(
     democracy_cat,
     life_expectancy, 
@@ -46,5 +46,6 @@ dat <- dat |>
 
 # -------------------------------------------------------------------------
 
-write_xlsx(dat, "output/data-for-analysis_2017-2023.xlsx", na.strings = "") 
-write_rds(dat, "output/dat_analysis.rds")
+fs::dir_create("output")
+write_xlsx(dat_filled, "output/dat_filled.xlsx", na.strings = "") 
+write_rds(dat_filled, "output/dat_filled.rds")

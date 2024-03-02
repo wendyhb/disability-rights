@@ -1,9 +1,13 @@
 source("R/my-packages.R")
 
-df_2022 <- read_rds("output/data-report_2017-2023_filled.rds")
-df_2022 <-df_2022 |> 
-  filter(year == 2022) |> 
-  select(-c(democracy_cat,year, crpd_category))
+dat_filled <- read_rds("output/dat_filled.rds")
+
+df_2022 <- dat_filled |> 
+  filter(year == 2022) 
+
+
+# |> 
+  select( -c(democracy_cat,year, crpd_category))
 
 
 # Create income groups based on gdp ---------------------------------------

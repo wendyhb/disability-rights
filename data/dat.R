@@ -45,11 +45,11 @@ regexes <- get_country_replacements()
 ## are in fact not part of the UN list
 
 # countries_qol <- countries_qol |> str_replace_all(regexes)
-# countries_un <- c(
-#   read_rds("data/subsets/un_protocol.rds") |> pull(country),
-#   read_rds("data/subsets/un_convention.rds") |> pull(country)
-# ) |> 
-#   unique()
+countries_un <- c(
+  read_rds("data/subsets/un_protocol.rds") |> pull(country),
+  read_rds("data/subsets/un_convention.rds") |> pull(country)
+) |>
+  unique()
 # un <- tibble(country = countries_un, in_un_list = "yes") 
 # tibble(country = countries_qol) |>
 #   left_join(un, by = "country") |>
@@ -79,10 +79,10 @@ dat <- Reduce(
 
 dat <- dat |> 
   mutate(country = str_squish(country) |> str_replace_all(regexes)) |> 
-  filter(year > 2007) |> 
   arrange(country, desc(year)) |> 
   group_by(country, year) |> 
   fill(everything(), .direction = "updown") |> 
   distinct(country, year, .keep_all = TRUE)
 
+dat <- dat |> filter(country %in% !!countries_un)
 write_rds(dat, "data/dat.rds")
