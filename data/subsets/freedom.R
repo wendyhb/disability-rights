@@ -9,4 +9,4 @@ freedom <- freedom |>
     .keep = "none"
     )
 
-write_rds(freedom, "data/freedom.rds")
+write_rds(freedom, "data/subsets/freedom.rds")

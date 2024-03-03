@@ -1,8 +1,8 @@
 get_country_replacements <- function() {
   
   c(".*Bahamas.*" = "Bahamas",
-    ".*Bolivia.*" = "Bolivia",
-    ".*Brunei.*"= "Brunei",
+    ".*Bolivia.*" = "Bolivia (Plurinational State of)",
+    ".*Brunei.*"= "Brunei Darussalam",
     ".*Bosnia And Herzegovina.*" = "Bosnia and Herzegovina",
     ".*Congo.*(Brazzaville).*" = "Congo",
     ".*Congo, Rep.*" = "Congo",
@@ -13,40 +13,41 @@ get_country_replacements <- function() {
     "Congo, Dem. Rep." = "Democratic Republic of the Congo",
     "Democratic Republic of Congo" = "Democratic Republic of the Congo", 
     
-    "Cote d'Ivoire" = "Côte d'Ivoire",
+    ".*Ivoire" = "Côte d'Ivoire",
     "Czechia" = "Czech Republic",
     
     "Eswatini.*" = "Eswatini",
     "Egypt, Arab Rep."= "Egypt",
     "Guinea Bissau" = "Guinea-Bissau",
-    ".*Iran.*"= "Iran",
+    ".*Iran.*"= "Iran (Islamic Republic of)",
     
-    ## North Korea
-    ".*Korea.*(Democratic People's Rep. of).*" = "North Korea",
-    ".*Korea, Dem. People's Rep.*" = "North Korea",
-    ".*Korea, North.*" = "North Korea",
+    ## Democratic People's Republic of Korea
+    ".*Korea.*(Democratic People's Rep. of).*" = "Democratic People's Republic of Korea",
+    ".*Korea, Dem. People's Rep.*" = "Democratic People's Republic of Korea",
+    ".*Korea, North.*" = "Democratic People's Republic of Korea",
     
-    ## South Korea
-    ".*Korea.*(Republic of).*" = "South Korea",
-    ".*Korea, Rep.*" = "South Korea",
-    ".*Korea, South.*" = "South Korea",
+    ## Republic of Korea
+    ".*Korea.*(Republic of).*" = "Republic of Korea",
+    ".*Korea, Rep.*" = "Republic of Korea",
+    ".*Korea, South.*" = "Republic of Korea",
     
     "Kyrgyz Republic" = "Kyrgyzstan",
     
-    ".*Lao.*"= "Laos",
-    ".*Micronesia.*" = "Micronesia",
-    ".*Moldova.*"= "Moldova",
-    ".*Palestine.*"= "Palestine",
-    "Russian Federation" = "Russia",
-    ".*Syria.*"= "Syria",
-    "Sao Tome and Principe" = "São Tomé and Príncipe",
-    ".*Tanzania.*"= "Tanzania",
-    ".*Gambia.*"= "Gambia",
-    "Trinidad And Tobago" = "Trinidad and Tobago",
-    ".*Turkiye.*" = "Turkey",
-    ".*Türkiye.*" = "Turkey",
-    ".*United States of America.*" = "United States",
-    ".*Venezuela.*" = "Venezuela",
-    ".*Viet Nam.*" = "Vietnam",
+    ".*Lao.*"= "Lao People's Democratic Republic",
+    ".*Micronesia.*" = "Micronesia (Federated States of)",
+    ".*Moldova.*" = "Republic of Moldova",
+    ".*Netherlands.*" = "Netherlands (Kingdom of the)",
+    ".*Palestine.*" = "State of Palestine",
+    "Saint" = "St.",
+    ".*Syria.*" = "Syrian Arab Republic",
+    ".*Tanzania.*" = "United Republic of Tanzania",
+    ".*Gambia.*" = "Gambia",
+    ".*Trinidad And Tobago.*" = "Trinidad and Tobago",
+    ".*Turkiye.*" = "Türkiye",
+    ".*Türkiye.*" = "Türkiye",
+    ".*United States of America.*" = "United States of America",
+    ".*United Kingdom.*" = "United Kingdom of Great Britain and Northern Ireland",
+    ".*Venezuela.*" = "Venezuela (Bolivarian Republic of)",
+    ".*Viet Nam.*" = "Viet Nam",
     ".*Yemen.*" = "Yemen")
 }

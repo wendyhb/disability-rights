@@ -23,4 +23,4 @@ safety <- do.call(rbind, table_ls) |>
 
 stopifnot(identical(unique(safety$year), years))
 
-write_rds(safety, "data/safety.rds")
+write_rds(safety, "data/subsets/safety.rds")

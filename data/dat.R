@@ -49,7 +49,8 @@ countries_un <- c(
   read_rds("data/subsets/un_protocol.rds") |> pull(country),
   read_rds("data/subsets/un_convention.rds") |> pull(country)
 ) |>
-  unique()
+  unique() |> 
+  sort()
 # un <- tibble(country = countries_un, in_un_list = "yes") 
 # tibble(country = countries_qol) |>
 #   left_join(un, by = "country") |>

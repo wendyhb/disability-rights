@@ -10,7 +10,13 @@ vars <- c("power-distance",
           "long-term-orientation", 
           "indulgence")
 
+# Loop --------------------------------------------------------------------
+
 list_of_tibbles <- list()
+country <- html |>
+  html_elements("div") |>
+  html_elements(".c-overview") |> 
+  html_attr("data-country") 
 
 for (i in vars) {
   text <- html |>
@@ -22,6 +28,9 @@ for (i in vars) {
   value <- text[c(TRUE, FALSE)] |> as.numeric()
   list_of_tibbles[[i]]<- tibble(country, value, variable = i)
 }
+
+
+# -------------------------------------------------------------------------
 
 culture <- list_of_tibbles |> 
   bind_rows() |> 
