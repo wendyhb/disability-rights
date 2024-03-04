@@ -1,4 +1,4 @@
-simple_country_names <- function(dat) {
+rename_country_simple <- function(dat) {
   dat |> 
     mutate(
       # Remove parentheses and anything between them
@@ -21,6 +21,7 @@ simple_country_names <- function(dat) {
         "United Republic of Tanzania" ~ "Tanzania",
         "United States of America" ~ "United States",
         "Sao Tome and Principe" ~ "São Tomé and Príncipe",
+        "Venezuela (Bolivarian Republic of)" ~ "Venezuela",
         .default = country
       )
     )

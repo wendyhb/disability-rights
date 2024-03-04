@@ -3,17 +3,17 @@ source("R/02_functions.R")
 
 dat_2022 <- read_rds("output/dat_2022.rds")
 stopifnot(cols %in% names(dat_2022))
+
 dat_2022 <- dat_2022 |>
   pivot_longer(cols = all_of(cols),
                names_to = "vars",
                values_to = "value" )
 
+
 # -------------------------------------------------------------------------
 
-## NOT STRATIFIED
-dat_2022 <- dat_2022 |>
-  group_by(vars)
-
+dat_2022 <- dat_2022 |> 
+  group_by(vars, gdp_cat)
 
 # -------------------------------------------------------------------------
 
@@ -21,6 +21,9 @@ dat_2022 <- dat_2022 |>
   nest_model_data()
 
 safe_model <- var_model|> safely()
+
+# -------------------------------------------------------------------------
+## NEED FIX
 
 models <- dat_2022 |> 
   describe_model()

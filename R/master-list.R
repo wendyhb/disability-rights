@@ -10,3 +10,9 @@ un_countries <- df_ls |>
   str_replace_all(get_country_replacements())
 
 dplyr::symdiff(df_2022$country, un_countries)
+
+
+
+# Countries that participated in the CRPD ---------------------------------
+
+## All in un_convention and un_protocol except "European Union"
