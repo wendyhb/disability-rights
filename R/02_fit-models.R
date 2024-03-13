@@ -18,26 +18,44 @@ dat_2022 <- dat_2022 |>
 # -------------------------------------------------------------------------
 
 dat_2022 <- dat_2022 |>
-  nest_model_data()
-
-safe_model <- var_model|> safely()
+  select(- democracy_cat, - year) |> 
+  nest_complete_data_per_lm()
 
 models <- dat_2022 |> 
-  describe_model()
+  model_tidy() 
 
 models_ov <- models |> model_overview()
 
-# -------------------------------------------------------------------------
 
-## check assumptions
+write_xlsx(models_ov, "output/fit-models.xlsx", na.strings = "")
+
+
+## check assumptions for models that have significant p values
+var_name <- models |> 
+  pull(vars)
+
+
+model_assumption <- function(models, var) {
+  sig_model <- models |> 
+    filter(vars == var)
+  
+  plot(sig_models$model[[1]])
+}
+
+ for (var in var_name) {
+  model_assumption(models, var)
+}
+
+
 
 library(easystats)
 sig_models <- models |> 
   filter(vars == "gdp_per_capita")
 
-sig_models$model[[1]] |> check_model()
+##sig_models$model[[1]] |> check_model()
 
 plot(sig_models$model[[1]])
+
 
 
 

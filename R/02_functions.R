@@ -1,4 +1,3 @@
-
 cols <- c("corruption_score", "democracy", "freedom_index", 
           "gdp_per_capita", "human_development_index", "life_expectancy", 
           "expected_years_of_schooling", "mean_years_of_schooling", "crime_index", 
@@ -6,7 +5,9 @@ cols <- c("corruption_score", "democracy", "freedom_index",
           "motivation", "uncertainty_avoidance", "long_term_orientation", 
           "indulgence", "masculinity")
 
-nest_model_data <- function(dat) {
+non_model_cols <- c("democracy_cat", "year", "crpd_cat")
+
+nest_complete_data_per_lm <- function(dat) {
   dat |> 
     nest() |> 
     mutate(
@@ -25,7 +26,9 @@ var_model <- function(df){
   lm(value ~ crpd, data = df)
 } 
 
-describe_model <- function(dat) {
+safe_model <- var_model |> safely()
+
+model_tidy <- function(dat) {
   dat |> 
     mutate(
       model = map(data, safe_model),
@@ -38,9 +41,11 @@ describe_model <- function(dat) {
     )
 }
 
+safe_model_tidy <- model_tidy |> safely()
 
-model_overview <- function(models) {
-  models |> 
+    
+model_overview <- function(dat) {
+  dat |> 
     select(vars, sample_size, r.squared, tidy) |> 
     unnest(tidy, keep_empty = TRUE) |> 
     group_by(term) |> 
@@ -56,3 +61,5 @@ model_overview <- function(models) {
     relocate(matches("Intercept"), .after = statistic_crpd) |> 
     arrange(p.value_crpd)
 }
+
+

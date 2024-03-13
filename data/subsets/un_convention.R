@@ -1,3 +1,4 @@
+source("R/read_treaty_url.R")
 url <- "https://treaties.un.org/Pages/ViewDetails.aspx?src=TREATY&mtdsg_no=IV-15&chapter=4&clang=_en"
 un_convention <- url |> 
   read_treaty_url() |> 
@@ -7,3 +8,4 @@ un_convention <- url |>
   )
   
 write_rds(un_convention, "data/subsets/un_convention.rds") 
+

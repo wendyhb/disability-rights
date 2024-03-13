@@ -13,7 +13,7 @@ dat <- dat |>
     protocol_ratified = if_else (!is.na(date_ratified_protocol), TRUE, FALSE),
     crpd_cat = case_when(
       convention_ratified & protocol_ratified ~ "ratified both convention and protocol",
-      convention_ratified & !protocol_ratified ~ "ratified protocol",
+      !convention_ratified & protocol_ratified ~ "ratified protocol",
       convention_signed & protocol_signed ~ "signed both convention and protocol",
       convention_signed & !protocol_signed  ~ "only signed convention"
       ),
@@ -31,8 +31,9 @@ dat <- dat |>
   mutate(
     gdp_cat = case_when(
       gdp_per_capita < 1085 ~ "Low income",
-      gdp_per_capita < 4256 ~ "Lower-middle income",
-      gdp_per_capita < 13206~ "Upper-middle income",
+      ##gdp_per_capita < 4256 ~ "Lower-middle income",
+      ##gdp_per_capita < 13206~ "Upper-middle income",
+      gdp_per_capita < 13206~ "middle income",
       gdp_per_capita > 13205~ "High income",
       .default = NA
     )
@@ -73,5 +74,8 @@ dat_2022 <- dat_filled |>
 
 fs::dir_create("output")
 write_xlsx(dat_filled, "output/dat_filled.xlsx", na.strings = "") 
+write_xlsx(dat, "output/dat.xlsx", na.strings = "")
+write_xlsx(dat_2022, "output/dat_2022.xlsx", na.strings = "")
+
 write_rds(dat_filled, "output/dat_filled.rds")
 write_rds(dat_2022, "output/dat_2022.rds")

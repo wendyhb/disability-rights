@@ -4,7 +4,8 @@ freedom <- read_xlsx(path, sheet = 2, col_names = TRUE, start_row = 2)
 freedom <- freedom |> 
   janitor::clean_names() |> 
   mutate(
-    country = country_territory, year = edition |> as.integer(),
+    country = country_territory, 
+    year = edition |> as.integer(),
     freedom_index = total, 
     .keep = "none"
     )

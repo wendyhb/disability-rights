@@ -1,48 +1,91 @@
 source("R/my-packages.R")
 source("R/02_functions.R")
 
-dat_2022 <- read_rds("output/dat_2022.rds")
-stopifnot(cols %in% names(dat_2022))
+dat <- read_rds("output/dat_2022.rds")
+stopifnot(cols %in% names(dat))
 
-dat_2022 <- dat_2022 |>
+dat <- dat |>
   pivot_longer(cols = all_of(cols),
                names_to = "vars",
                values_to = "value" )
 
-
 # -------------------------------------------------------------------------
 
-dat_2022 <- dat_2022 |> 
+dat <- dat |> 
   group_by(vars, gdp_cat)
 
 # -------------------------------------------------------------------------
 
-dat_2022 <- dat_2022 |>
-  nest_model_data()
-
-safe_model <- var_model|> safely()
+dat <- dat |>  
+  select(- democracy_cat, - year) |> 
+  nest_complete_data_per_lm()
 
 # -------------------------------------------------------------------------
 ## NEED FIX
+models <- dat |> 
+  filter(sample_size > 10) |>
+  model_tidy() 
 
-models <- dat_2022 |> 
-  describe_model()
+# |> 
+# filter(!is.na(gdp_cat))
+
 
 models_ov <- models |> model_overview()
+
+write_xlsx(models_ov, "output/fit-models_stratified-by-income.xlsx", na.strings = "")
+
 
 # -------------------------------------------------------------------------
 
 ## check assumptions
 
-library(easystats)
+
 sig_models <- models |> 
-  filter(vars == "gdp_per_capita")
+  filter(vars == "unemployment_rate" & gdp_cat == "High income")
+plot(sig_models$model[[1]])
 
-sig_models$model[[1]] |> check_model()
+sig_models <- models |> 
+  filter(vars == "life_expectancy" & gdp_cat == "High income")
+plot(sig_models$model[[1]])
 
+sig_models <- models |> 
+  filter(vars == "freedom_index" & gdp_cat == "High income")
+plot(sig_models$model[[1]])
+
+models_ov$vars |> head(10)
+sig_models <- models |> 
+  filter(vars == "expected_years_of_schooling" & gdp_cat == "High income")
+plot(sig_models$model[[1]])
+
+sig_models <- models |> 
+  filter(vars == "human_development_index" & gdp_cat == "High income")
 plot(sig_models$model[[1]])
 
 
+sig_models <- models |> 
+  filter(vars == "uncertainty_avoidance" & gdp_cat == "middle income")
+plot(sig_models$model[[1]])
+
+
+sig_models <- models |> 
+  filter(vars == "democracy" & gdp_cat == "High income")
+plot(sig_models$model[[1]])
+
+sig_models <- models |> 
+  filter(vars == "individualism" & gdp_cat == "High income")
+plot(sig_models$model[[1]])
+
+sig_models <- models |> 
+  filter(vars == "life_expectancy" & gdp_cat == "middle income")
+plot(sig_models$model[[1]])
+
+sig_models <- models |> 
+  filter(vars == "human_development_index" & gdp_cat == "Low income")
+plot(sig_models$model[[1]])
+
+
+#library(easystats)
+# sig_models$model[[1]] |> check_model()
 
 # -------------------------------------------------------------------------
 
