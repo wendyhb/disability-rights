@@ -35,9 +35,11 @@ model_assumption <- function(models, var) {
     filter(vars == var)
   
   plot(sig_models$model[[1]])
-}0
-model_assumption(sig_mods, "unemployment_rate")
-## assumptions are all ok
+}
+
+model_assumption(sig_mods, "indulgence")
+
+## assumptions are ok for 'indulgence" and "uncertainty_avoidance
  
 
 

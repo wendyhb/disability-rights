@@ -26,6 +26,7 @@ dat <- dat |>
       )
   ) 
 
+
 # Create income groups based on gdp ---------------------------------------
 dat <- dat |>
   mutate(
@@ -79,3 +80,12 @@ write_xlsx(dat_2022, "output/dat_2022.xlsx", na.strings = "")
 
 write_rds(dat_filled, "output/dat_filled.rds")
 write_rds(dat_2022, "output/dat_2022.rds")
+tab <- dat_2022$crpd |> table() |> as.data.frame()
+names(tab) <- c("crpd_cat", "country_count")
+tab <- tab|> mutate(crpd = c("only signed convention",
+                             "signed both convention and protocol",
+                             "ratified convention",
+                             "ratified both convention and protocol" 
+                             )) 
+
+
