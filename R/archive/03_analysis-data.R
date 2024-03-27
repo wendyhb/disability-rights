@@ -49,13 +49,13 @@ data_combined <- data_combined |>
 data_combined  <- data_combined  |> 
   mutate(crpd_category = case_when(
     crpd_ratified & protocol_ratified ~ "ratified both crpd and protocol",
-    crpd_ratified & !protocol_ratified ~ "ratified protocol",
+    crpd_ratified & !protocol_ratified ~ "ratified crpd",
     crpd_signed & protocol_signed ~ "signed both crpd and protocol",
     crpd_signed & !protocol_signed  ~ "only signed crpd",
   )) |> 
   mutate(crpd_category_v = case_match(crpd_category,
                                       "ratified both crpd and protocol" ~ 4,
-                                      "ratified protocol" ~ 3,
+                                      "ratified crpd" ~ 3,
                                       "signed both crpd and protocol" ~ 2,
                                       "only signed crpd" ~ 1,
   )) 

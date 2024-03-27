@@ -88,3 +88,4 @@ dat <- dat |>
 dat <- dat |> filter(country %in% !!countries_un)
 write_rds(dat, "data/dat.rds")
 dat$country |> unique()
+

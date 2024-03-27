@@ -8,21 +8,13 @@ dat_2022 <- dat_2022 |>
                names_to = "vars",
                values_to = "value" )
 
-# -------------------------------------------------------------------------
-
-## NOT STRATIFIED
-dat_2022 <- dat_2022 |>
-  group_by(vars)
-
-
-# -------------------------------------------------------------------------
+dat_2022 <- dat_2022 |> group_by(vars)
 
 dat_2022 <- dat_2022 |>
   select(- democracy_cat, - year) |> 
   nest_complete_data_per_lm()
 
-models <- dat_2022 |> 
-  model_tidy() 
+models <- dat_2022 |> model_tidy()
 
 models_ov <- models |> model_overview()
 
@@ -30,32 +22,23 @@ models_ov <- models |> model_overview()
 write_xlsx(models_ov, "output/fit-models.xlsx", na.strings = "")
 
 
-## check assumptions for models that have significant p values
-var_name <- models |> 
-  pull(vars)
 
+
+# Check Assumptions -------------------------------------------------------------
+
+sig_vars <- models_ov |> filter(p.value_crpd < 0.1) |> pull(vars)
+
+sig_mods <- models |> filter(vars %in% !!sig_vars)
 
 model_assumption <- function(models, var) {
-  sig_model <- models |> 
+  sig_models <- models |> 
     filter(vars == var)
   
   plot(sig_models$model[[1]])
-}
-
- for (var in var_name) {
-  model_assumption(models, var)
-}
-
-
-
-library(easystats)
-sig_models <- models |> 
-  filter(vars == "gdp_per_capita")
-
-##sig_models$model[[1]] |> check_model()
-
-plot(sig_models$model[[1]])
-
+}0
+model_assumption(sig_mods, "unemployment_rate")
+## assumptions are all ok
+ 
 
 
 

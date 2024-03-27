@@ -13,14 +13,14 @@ dat <- dat |>
     protocol_ratified = if_else (!is.na(date_ratified_protocol), TRUE, FALSE),
     crpd_cat = case_when(
       convention_ratified & protocol_ratified ~ "ratified both convention and protocol",
-      !convention_ratified & protocol_ratified ~ "ratified protocol",
+      convention_ratified & !protocol_ratified ~ "ratified convention",
       convention_signed & protocol_signed ~ "signed both convention and protocol",
       convention_signed & !protocol_signed  ~ "only signed convention"
       ),
     crpd = case_match(
       crpd_cat,
       "ratified both convention and protocol" ~ 4,
-      "ratified protocol" ~ 3,
+      "ratified convention" ~ 3,
       "signed both convention and protocol" ~ 2,
       "only signed convention" ~ 1,
       )

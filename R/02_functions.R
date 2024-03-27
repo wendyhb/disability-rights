@@ -22,15 +22,19 @@ nest_complete_data_per_lm <- function(dat) {
     )
 }
 
-var_model <- function(df){
+
+
+lm_val_by_crpd <- function(df){
   lm(value ~ crpd, data = df)
 } 
 
-safe_model <- var_model |> safely()
+safe_model <- lm_val_by_crpd |> safely()
 
 model_tidy <- function(dat) {
   dat |> 
     mutate(
+      ##model = map(data, \(x) lm(value ~ crpd, data = x)),
+      ## If we get errors, use
       model = map(data, safe_model),
       model = map(model, \(x)x[[1]]),
       tidy   = model |> map(broom::tidy),
@@ -40,6 +44,7 @@ model_tidy <- function(dat) {
       r.squared = glance |> map_dbl("r.squared"),
     )
 }
+
 
 safe_model_tidy <- model_tidy |> safely()
 
@@ -61,5 +66,7 @@ model_overview <- function(dat) {
     relocate(matches("Intercept"), .after = statistic_crpd) |> 
     arrange(p.value_crpd)
 }
+
+
 
 
